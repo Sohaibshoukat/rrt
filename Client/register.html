@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/login.css">
+    <title>Login</title>
+</head>
+<body class="background-image">
+    <div style="background-color: rgba(34, 34, 34, 0.5);">
+        <div>
+            <div  id="head" >
+                <div>
+                    <a href="/Client/login.html">
+                        <img src="../Client/images/side-arrow.png" class="side-arrow"  >
+                    </a>
+                  
+                </div>
+                <div>
+                    <a href="/Client/login.html">
+                        <img src="../Client/images/cross.png" class="cross" >
+                    </a>
+                   
+                </div>
+
+            </div>
+           
+            <form>
+                <div class="form-group">
+                   <img src="../Client/images/user.png" class="icon" alt="">
+                    <input type="text" id="inputField" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <img src="../Client/images/password.png" class="icon" alt="">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <img src="../Client/images/eye.svg" id="togglePassword" class="icon2" alt="">
+                </div>
+                <div class="form-group">
+                    <img src="../Client/images/password.png" class="icon" alt="">
+                    <input type="password" id="password1" name="password" placeholder="Enter your password again" required>
+                    <img src="../Client/images/eye.svg" id="togglePassword1" class="icon2" alt="">
+                </div>
+                <div class="form-group">
+                    <img src="../Client/images/email.png" class="icon" alt="">
+                     <input type="text" id="inputField" name="email" placeholder="Enter your email" required>
+                 </div>
+                 <div class="form-group">
+                    <img src="../Client/images/invitation.png" class="icon" alt="">
+                     <input type="text" id="inputField" name="Invitation-code" placeholder="Enter Invitation code" required>
+                 </div>
+                 <div class="form-group" style="display: flex;">
+                    <div class="country-code" ><p class="para-style">+92</p></div>
+                    <input type="text"  name="phone-number" placeholder="Enter your phone number" id="phone"  required>
+                    
+                </div>
+                <div class="form-group" style="display: flex;justify-content: space-between;">
+                    <img src="../Client/images/veriy-code.png" class="icon" alt="">
+                    <input type="text" id="code" name="code" placeholder="Enter verification code" class="code"  required>
+                    <img src="../Client/images/verify.jpg" class="ver" >
+                </div>
+               
+                <div class="forgot-password">
+                   
+                    <a href="#">Online Service</a>
+                    <a href="#">App Download</a>
+                </div>
+                <a href="/Client/register.html"> <button type="button" class="login-button">Register</button></a>
+                <a href="/Client/login.html"><button type="button" class="Register-button">Log in</button></a>
+            </form>
+        </div>
+    </div>
+    <script>
+        const passwordInput = document.getElementById("password");
+        const togglePasswordIcon = document.getElementById("togglePassword");
+
+        togglePasswordIcon.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                
+            } else {
+                passwordInput.type = "password";
+              
+            }
+        });
+    </script>
+    <script>
+        const passwordInput1 = document.getElementById("password1");
+        const togglePasswordIcon1 = document.getElementById("togglePassword1");
+
+        togglePasswordIcon1.addEventListener("click", function () {
+            if (passwordInput1.type === "password") {
+                passwordInput1.type = "text";
+                
+            } else {
+                passwordInput1.type = "password";
+              
+            }
+        });
+    </script>
+</body>
+</html>

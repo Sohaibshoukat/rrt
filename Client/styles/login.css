@@ -13,8 +13,8 @@ body{
     margin: 0 auto;
 }
 .logo-style{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,38 +23,81 @@ input{
     background-color: white;
     border: 2px solid #fff ;
 }
-
+.icon{
+    width: 20px;
+    height: 20px;
+}
 
 .form-group {
     margin: 35px;
 }
-
-
-
+.verify{
+    margin-left: 90px;
+    width: 100px;margin-right: 40px;
+}
+.cross{
+    width: 30px;height: 25px;
+}
+.side-arrow{
+    width: 20px;height: 30px;
+}
+.country-code{
+    background-color: aliceblue;width: 23%;margin-right:20px;border-radius:5px;
+}
+.ver{
+    width: 100px;margin-right: 40px;
+}
+#head{
+    display: flex;justify-content: space-between; padding: 30px 120px 0px 90px;
+}
 .form-group input {
-    width: 95%;
-    padding: 15px;
-    border: 2px solid #ccc;
+    width: 91%;
+    padding: 15px 15px 15px 60px;
+    color: white;
+    
+    border: 2px solid #f8f9f9;
     background-color: hsla(0,0%,100%,.3);
     border-radius: 5px;
+}
+.form-group input::placeholder {
+    color: #ffffff; /* Set the color you prefer */
+    font-size: 15px;
+    padding: 40px;
+}
+.icon{
+    width: 30px;height: 30px;position:absolute;padding: 10px;
+}
+.icon2{
+    width: 30px;height: 30px;position:absolute;padding: 20px;  right: 120px; margin-top:23px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.para-style{
+    margin-top: 10px;margin-bottom:10px;font-weight: bold;font-size: 20px;text-align: center;
 }
 form{
     width: 95%;
     padding: 35px;
     
 }
-.forgot-password {
-    
+.forgot-password{
+    display: flex;
+    justify-content: space-between;
+}
+.forgot-password a{
+    margin-right: 70px;
     margin-top: 10px;
-   
+   margin-left: 40px;
+   font-size: 20px;
     text-decoration: none; /* Remove underlines from the link */
-    color: #878d92; /* Set the link color */
+    color: #ffffff; /* Set the link color */
 }
 
 .login-button {
     width: 92%;
-    margin: 30px;
+    margin: 38px;
     padding: 15px;
+    font-size: 20px;
     background: #007BFF;
     color: #fff;
     border: none;
@@ -63,8 +106,8 @@ form{
 }
 .Register-button{
     width: 92%;
-    
-    margin: -30px 10px 30px 30px;
+    font-size: 20px;
+    margin: -30px 10px 30px 38px;
     padding: 15px;
     background: linear-gradient(180deg,#565656,#303030);
     color: #fff;
@@ -72,13 +115,17 @@ form{
     border-radius: 5px;
     cursor: pointer;
 }
+.code{
+    width: 30%;
+}
+#phone{
+    width: 67%;
+}
 .verification-code {
     display: none; /* Hide verification code field initially */
 }
 
-@media (max-width: 500px) {
-    .login-container {
-        width: 90%;
-        margin: 0;
-    }
+a{
+    text-decoration: none;
+    color: white;
 }
