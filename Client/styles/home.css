@@ -1,0 +1,128 @@
+.carousel_items {
+    display: flex;
+    wrap: nowrap;
+    overflow: hidden;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.carousel_item {
+    position: relative;
+    min-width: 100%;
+    margin: auto;
+    height: 300px;
+    transition: all 0.5s linear;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 25px;
+    background-position: center;
+
+}
+
+.item1 {
+    background-image: url("../images/Slider1.jpg");
+}
+
+.item2 {
+    background-image: url("../images/Slider2.jpg");
+
+}
+
+.item3 {
+    background-image: url("../images/Slider3.jpg");
+}
+
+.item4 {
+    background-image: url("../images/Slider4.jpg");
+}
+
+.item5 {
+    background-image: url("../images/Slider5.jpg");
+}
+
+.MoneySection{
+    display: flex;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    padding: 15px 0px;
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+.MoneySection .Data h5{
+    color: white;
+    width: fit-content;
+    border-radius: 7px;
+    padding: 8px;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg,#ffca32,#fc9414);
+}
+
+.MoneySection .Data p{
+    color: #868b9a;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.MoneySection .Data h6{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.MoneySection .FinanceFealing{
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.MoneySection .Button{
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.MoneySection .Button img{
+    max-width: 50px;
+}
+
+.EventBtn{
+    background-color: #5182fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: 5px;
+    width: 40%;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.EventBtn img{
+    width: 30px;
+}
+
+
+
+@media screen and (max-width:650px) {
+    .carousel_item{
+        height: 150px;
+    }
+    .MoneySection .FinanceFealing{
+        gap: 20px;
+    }
+    .MoneySection .Button img{
+        max-width: 30px;
+    }
+    .MoneySection .Button{
+        font-size: 12px;
+    }
+    .MoneySection{
+        flex-direction: column;
+        gap: 30px;
+    }
+}
