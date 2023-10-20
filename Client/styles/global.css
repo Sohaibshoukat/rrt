@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+}
+
+.header{
+    background-color: white;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .logo{
+    width: 50px;
+}
+
+.header .logo img{
+    width: 100%;
+    object-fit: contain;
+}
+
+
+.MatchesCollection{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 95%;
+    margin:auto;
+    margin-top: 50px;
+}
+
+.MatchesCollection .Match{
+    min-height: 120px;
+    margin-bottom: 45px;
+    background: url("../images/listbg.png");
+    background-position: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.058823529411764705);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.MatchesCollection .Match .IDsec{
+    position: absolute;
+    left: 1px;
+    top: -22px;
+    z-index: 100;
+    background: #597ef7;
+    padding: 2px 20px;
+    color: white;
+    border-top-right-radius: 10px;
+}
+
+.MatchesCollection .Match .Title{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.MatchesCollection .Match .Times{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    align-items: center;
+}
+
+.MatchesCollection .Match .Times p{
+    color: #929ec1;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 90px;
+}
+
+.MatchesCollection .Match .Teams{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.MatchesCollection .Match .Teams .Team{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.MatchesCollection .Match .Teams .Team img{
+    width: 50px;
+    height: 50px;
+}
+
+.MatchesCollection .Match .Teams .Team h5{
+    max-width: 100px;
+    font-size: 18px;
+    color: #929ec1;
+    font-weight: 700;
+    width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.MatchesCollection .Match .Teams h4{
+    width: 10px;
+    height: 20px;
+    margin: 0 27.5px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: DINProMedium;
+    margin: 0 0.08rem;
+    color: #4176f7;
+}
+
+@media screen and (max-width:650px) {
+    .MatchesCollection{
+        gap: 30px;
+    }
+    
+    
+    .MatchesCollection .Match .Title{
+        font-size: 16px;
+    }
+    
+    
+    .MatchesCollection .Match .Times p{
+        font-size: 16px;
+    }
+    
+    
+    .MatchesCollection .Match .Teams .Team img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    .MatchesCollection .Match .Teams .Team h5{
+        font-size: 14px;
+    }
+    
+    .MatchesCollection .Match .Teams h4{
+        font-size: 14px;
+    }
+}
