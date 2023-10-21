@@ -1,0 +1,83 @@
+.arr{
+    transform: rotate(180deg);
+    width: 15px;
+}
+.invite{
+    background-color: white;
+    box-shadow: 2px 2px 5px 2px rgba(190, 190, 190, 0.5);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.invitation{
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+.qrinvite{
+    width: 200px;
+    top: -18%;
+    position: relative;
+    
+}
+.ic{
+    width: 95%;
+    border: 1px solid rgb(84, 170, 241);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.copycode{
+    width: 1%;
+}
+.bgim{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-image: url("../images/qr.png");
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    height: 80vh;
+    background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  .ic{
+    width: 90%;
+   
+    padding: 10px;
+    margin: 20px;
+ 
+} 
+.copycode{
+    width: 4%;
+}
+.qrinvite{
+    width: 150px;
+   
+    
+}
+}
+.linkin{
+    color: rgb(84, 129, 233);
+}
+@media (max-width: 320px) {
+    .qrinvite{
+        width: 140px;
+        
+        
+    }
+    .linkin{
+       font-size: 8px;
+    }
+    .ic{
+      width: 80%;
+         } 
+         .copycode{
+            width: 4%;
+        }
+  }
