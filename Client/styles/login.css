@@ -1,7 +1,8 @@
 .background-image{
     background-image: url("../images/background-image.png");
     background-size: cover;
-    
+    background-repeat: no-repeat;
+    width: 100%;
 }
 .container {
     display: flex;
@@ -29,11 +30,13 @@ input{
 }
 
 .form-group {
+    position: relative;
     margin: 35px;
 }
 .verify{
     margin-left: 90px;
-    width: 100px;margin-right: 40px;
+    width: 100px;
+    margin-right: 40px;
 }
 .cross{
     width: 30px;height: 25px;
@@ -48,7 +51,9 @@ input{
     width: 100px;margin-right: 40px;
 }
 #head{
-    display: flex;justify-content: space-between; padding: 30px 120px 0px 90px;
+    display: flex;
+    justify-content: space-between; 
+    padding: 30px 120px 0px 90px;
 }
 .form-group input {
     width: 91%;
@@ -68,7 +73,12 @@ input{
     width: 30px;height: 30px;position:absolute;padding: 10px;
 }
 .icon2{
-    width: 30px;height: 30px;position:absolute;padding: 20px;  right: 120px; margin-top:23px;
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    padding: 20px;  
+    right: 3%; 
+    margin-top:23px;
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -122,10 +132,59 @@ form{
     width: 67%;
 }
 .verification-code {
-    display: none; /* Hide verification code field initially */
+    display: none;
 }
 
 a{
     text-decoration: none;
     color: white;
+}
+
+
+@media screen and (max-width:900px) {
+    .background-image{
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width:650px) {
+    form{
+        width: 95%;
+        padding: 10px;   
+    }
+    .form-group{
+        margin: 20px 5px;
+    }
+    .verify{
+        margin-left: 20px;
+        width: 100px;
+        margin-right: 5px;
+    }
+    .forgot-password a{
+        margin-right: 20px;
+        margin-top: 10px;
+       margin-left: 10px;
+       font-size: 16px;
+    }
+    .form-group input {
+        width: -webkit-fill-available;
+        padding: 15px 15px 15px 15px;
+        color: white;        
+        border: 2px solid #f8f9f9;
+        background-color: hsla(0,0%,100%,.3);
+        border-radius: 5px;
+    }
+    .login-button {
+        width: 95%;
+        margin: 20px 10px;
+        font-size: 16px;
+    }
+    .Register-button{
+        width: 95%;
+        margin: 20px 10px;
+        font-size: 16px;
+    }
+    #head{
+        padding: 30px 20px 0px 20px;
+    }
 }
