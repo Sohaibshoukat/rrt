@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/global.css" />
-    <link rel="stylesheet" href="./styles/recharge.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="invite">
-      <a href="../Client/me.html">
-        <img src="../Client/images/right-arrow.png" alt="" class="arr" />
-      </a>
-      <h3>Recharge record</h3>
-      <div></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/Recharge.css">
+    <title>Recharge Account</title>
+</head>
+<body>
+    <header class="header" style="padding: 20px 10px;">
+        <a href="/">
+            <h3><</h3>
+        </a>
+        <h3>Online Recharge</h3>
+        <div></div>
+    </header>
+    <div class="RechargeType">
+        <h3>Recharge</h3>
+        <div class="Type">
+            <img src="./images/USDT_recharge.png" alt="">
+            <h3>USDT</h3>
+        </div>
     </div>
-    <div class="history">
-        <img src="../Client/images/record.png" alt="" class="rec" >
-        <p>Absolutely Empty</p>
+    <div class="RechargeAmounts">
+        <h4>Account Balance <span id="Balance">0</span></h4>
+        <h3>Recharge Amount:</h3>
+        <div class="RechargeBalance">
+            <div>
+                <h2 id="SelectedBalance">5</h2>
+                <p>Actual Amount <span id="Actual">88500</span></p>
+            </div>
+            <div>
+                <h1 id="SelectedType">USDT</h1>
+                <h5>USDT Exchange Rate: 295</h5>
+            </div>
+        </div>
+        <div class="Data">
+            <ul>
+                <li>5</li>
+                <li>10</li>
+                <li>50</li>
+                <li>100</li>
+                <li>300</li>
+                <li>500</li>
+                <li>1000</li>
+                <li>3000</li>
+                <li>5000</li>
+            </ul>
+        </div>
+        <button class="RechargeBtn" disabled="true">Recharge Now</button>
+        <h2 class="Tax">For transferring USDT, the platform will bear the transaction fee of 1 USDT. After the recharge is completed, the system will automatically add 1 USDT to the amount.</h2>
     </div>
-  </body>
+    <script src="./JS/recharge.js"></script>
+</body>
 </html>

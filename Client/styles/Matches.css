@@ -1,0 +1,28 @@
+.SearchTerm{
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+}
+
+.SearchTerm input{
+    padding: 10px;
+    border: 1px solid blue;
+    color: rgb(175, 175, 175);
+    font-size: 18px;
+    background-color: transparent;
+    width: 100%;
+}
+
+.SearchTerm input::placeholder{
+    color: rgb(168, 168, 168);
+}
+
+.SearchTerm .btn{
+    background-color: blue;
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+}

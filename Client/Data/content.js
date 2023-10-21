@@ -1,137 +1,125 @@
-export const Project=[
+const FullBet=[
     {
-        id:"1000713",
-        time:"21:00:00",
-        title:"Erovnuli Liga",
-        Team:[
-            {
-                name:"Dinamo Batumi",
-                img:"Dinamo"
-            },
-            {
-                name:"Dila",
-                img:"Dila"
-            }
-        ]
+        Score:"0-0",
+        Odds:2.72,
     },
     {
-        id:"1029185",
-        time:"21:00:00",
-        title:"1 Lyga",
-        Team:[
-            {
-                name:"Garliava",
-                img:"Garliava"
-            },
-            {
-                name:"Panevezys II",
-                img:"Panevezys"
-            }
-        ]
+        Score:"0-1",
+        Odds:2.75,
     },
     {
-        id:"988339",
-        time:"21:00:00",
-        title:"Danallsvenskan",
-        Team:[
-            {
-                name:"Norrkoping W",
-                img:"NoImage"
-            },
-            {
-                name:"Pitea",
-                img:"NoImage"
-            }
-        ]
+        Score:"0-2",
+        Odds:2.92,
     },
     {
-        id:"1137747",
-        time:"21:00:00",
-        title:"League Cup",
-        Team:[
-            {
-                name:"Al-Jazira",
-                img:"AlJazira"
-            },
-            {
-                name:"Al Wahda FC",
-                img:"AlWahda"
-            }
-        ]
+        Score:"0-3",
+        Odds:2.76,
     },
     {
-        id:"1127307",
-        time:"21:00:00",
-        title:"Persian Gulf Pro League",
-        Team:[
-            {
-                name:"Foolad FC",
-                img:"Foolad"
-            },
-            {
-                name:"Esteghlal Khuzestan",
-                img:"Esteghlal"
-            }
-        ]
+        Score:"1-0",
+        Odds:2.65,
     },
     {
-        id:"1138858",
-        time:"21:00:00",
-        title:"Sultan Cup",
-        Team:[
-            {
-                name:"Sohar",
-                img:"Sohar"
-            },
-            {
-                name:"Al Seeb",
-                img:"AlSeeb"
-            }
-        ]
+        Score:"1-1",
+        Odds:2.95,
     },
     {
-        id:"1136319",
-        time:"21:00:00",
-        title:"Taca de Portugal",
-        Team:[
-            {
-                name:"Lusitania",
-                img:"LogoSoon"
-            },
-            {
-                name:"Benfica",
-                img:"Benfica"
-            }
-        ]
+        Score:"1-2",
+        Odds:2.83,
     },
     {
-        id:"1107156",
-        time:"21:00:00",
-        title:"3. liga - MSFL",
-        Team:[
-            {
-                name:"Hranice",
-                img:"LogoSoon"
-            },
-            {
-                name:"Frydek- Mistek",
-                img:"Frydek"
-            }
-        ]
+        Score:"1-3",
+        Odds:2.38,
     },
     {
-        id:"1043188",
-        time:"21:00:00",
-        title:"Super Liga",
-        Team:[
-            {
-                name:"Zlate Moravce",
-                img:"Zlate"
-            },
-            {
-                name:"Zemplin Michalovce",
-                img:"Zemplin"
-            }
-        ]
-    }
+        Score:"2-0",
+        Odds:1.74,
+    },
+    {
+        Score:"2-1",
+        Odds:2.50,
+    },
+    {
+        Score:"2-2",
+        Odds:2.56,
+    },
+    {
+        Score:"2-3",
+        Odds:1.74,
+    },
+    {
+        Score:"3-0",
+        Odds:0.78,
+    },    
+    {
+        Score:"3-1",
+        Odds:1.18,
+    },    
+    {
+        Score:"3-2",
+        Odds:1.11,
+    },    
+    {
+        Score:"3-3",
+        Odds:0.87,
+    },    
+    {
+        Score:"*-4",
+        Odds:0.3,
+    },
+    {
+        Score:"4-*",
+        Odds:0.3,
+    },
+
+
+]
+
+const HalfBet=[
+    {
+        Score:"0-0",
+        Odds:2.05,
+    },
+    {
+        Score:"0-1",
+        Odds:2.79,
+    },
+    {
+        Score:"0-2",
+        Odds:2.64,
+    },
+    {
+        Score:"1-0",
+        Odds:2.79,
+    },
+    {
+        Score:"1-1",
+        Odds:2.87,
+    },
+    {
+        Score:"1-2",
+        Odds:2.11,
+    },
+    {
+        Score:"2-0",
+        Odds:1.74,
+    },
+    {
+        Score:"2-1",
+        Odds:1.38,
+    },
+    {
+        Score:"2-2",
+        Odds:0.78,
+    },
+    {
+        Score:"*-3",
+        Odds:0.5,
+    },
+    {
+        Score:"3-*",
+        Odds:0.4,
+    },
+
+
 ]

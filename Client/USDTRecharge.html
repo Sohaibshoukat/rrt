@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/Recharge.css">
+    <link rel="stylesheet" href="./styles/global.css">
+    <title>USDT</title>
+</head>
+<body>
+    
+    <div class="main">
+        <h3>Recharge Info</h3>
+        <div class="AccountDetail">
+            <h4>Wallet Address</h4>
+            <img src="./images/QRPayOut.jpg" alt="">
+            <p>0x53291E1192A529CC0fecaAb861e9C9B1cAEBd780</p>
+        </div>
+        <div class="Copy" id="copyButton">Copy wallet Address</div>
+        <div class="OrderDetail">
+            <div class="Detail">
+                <h3>Type</h3>
+                <h3>USDT</h3>
+            </div>
+            <div class="Detail">
+                <h3>Recharge Amount</h3>
+                <h3 id="Amount"></h3>
+            </div>
+            <div class="Detail">
+                <h3>Order Number</h3>
+                <h3 id="OrderNum" class="Num"></h3>
+            </div>
+
+            <button class="confirm" id="confirmButton">Confirm</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Copy wallet address to clipboard
+            const copyButton = document.getElementById("copyButton");
+            const walletAddress = "0x53291E1192A529CC0fecaAb861e9C9B1cAEBd780";
+    
+            copyButton.addEventListener("click", function() {
+                const textarea = document.createElement("textarea");
+                textarea.value = walletAddress;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                alert("Wallet address copied to clipboard.");
+            });
+    
+            // Get the amount from session storage
+            const amount = sessionStorage.getItem("Amount");
+            if (amount) {
+                document.getElementById("Amount").textContent = amount;
+            }
+    
+            // Generate a random order number
+            const orderNumber = "THUU" + Date.now() + Math.floor(Math.random() * 10000);
+            document.getElementById("OrderNum").textContent = orderNumber;
+        });
+
+        const confirmButton = document.getElementById("confirmButton");
+        confirmButton.addEventListener("click", function() {
+        // Redirect to index.html
+        window.open("/","_self");
+    });
+
+    </script>
+
+</body>
+</html>
