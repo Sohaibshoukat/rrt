@@ -1,0 +1,36 @@
+.invite{
+    background-color: white;
+    box-shadow: 2px 2px 5px 2px rgba(190, 190, 190, 0.5);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.todays-bet{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+.beta{
+    color: rgb(45, 121, 45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.rec{
+    width: 10%;
+    height:80px;
+}
+.betpa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

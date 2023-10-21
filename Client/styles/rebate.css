@@ -1,0 +1,17 @@
+.rebcen{
+    background: url("../images/rebate-center.png");
+    border-radius: 10px;
+    background-size: cover;
+    
+    margin: 20px;
+}
+.to{
+    display: flex;
+    flex-direction: column;
+}
+.prop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
