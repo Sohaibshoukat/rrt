@@ -1,0 +1,149 @@
+.mainHead {
+    background-color: white;
+    text-align: center;
+}
+
+.mainHead p {
+    color: #a4a4a4;
+    font-size: 16px;
+}
+
+.mainHead h5 {
+    color: black;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.MatchTeam {
+    width: 90%;
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Team img {
+    width: 170px;
+    border-radius: 50%;
+    border: 2px solid #c0beed;
+}
+
+.Team p {
+    color: black;
+    font-size: 18px;
+}
+
+.Center h1 {
+    font-size: 50px;
+    color: #7d5afd;
+}
+
+.ImageGround {
+    margin-top: 15px;
+    width: 100%;
+    height: 98px;
+}
+
+.Imagebg {
+    background-image: url("../images/groundbg.png");
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.ImageGround img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+}
+
+.Selection {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: white;
+    width: 100%;
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.Selection .UnSelected {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    flex-basis: 50%;
+    text-align: center;
+    color: black;
+    font-size: 22px;
+    padding: 15px;
+}
+
+.Selection .Selected {
+    border: none;
+    cursor: pointer;
+    flex-basis: 45%;
+    border-radius: 13px;
+    background: #704ffb;
+    box-shadow: #a08bff 0 0 1.06667vw 0.533333vw inset;
+    color: #fff;
+    padding: 15px;
+    font-size: 22px;
+    width: 100%;
+}
+
+.detail_content_list {
+    max-width: 95%;
+    margin: auto;
+}
+
+.detail_content_list-body {
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+    padding: 12px 15px
+}
+
+.detail_content_list h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+}
+
+.detail_content_list .red {
+    color: red;
+}
+
+.detail_content_list h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+
+.Orderbtn {
+    background: #704ffb;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 18px;
+    border-radius: 50px;
+    padding: 10px 8px;
+}

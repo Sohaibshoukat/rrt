@@ -8,7 +8,15 @@ body{
     overflow-x: hidden;
 }
 
+a{
+    color: black;
+    text-decoration: none;
+}
+
 .header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: white;
     padding: 5px 20px;
     display: flex;
@@ -131,6 +139,28 @@ body{
     color: #4176f7;
 }
 
+footer{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: sticky;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.Menu{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(111, 123, 154);
+}
+
+.Menu img{
+    width: 30px;
+}
+
 @media screen and (max-width:650px) {
     .MatchesCollection{
         gap: 30px;
@@ -158,5 +188,16 @@ body{
     
     .MatchesCollection .Match .Teams h4{
         font-size: 14px;
+    }
+    footer{
+        padding: 10px 20px;
+    }
+    
+    .Menu{
+        font-size: 16px;
+    }
+    
+    .Menu img{
+        width: 25px;
     }
 }
