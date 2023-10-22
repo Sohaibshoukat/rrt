@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/security.css" />
+    <link rel="stylesheet" href="./styles/cnic.css">
+    <title>Upload CNIC</title>
+</head>
+<body>
+    <div class="invite">
+        <a href="me.html">
+            <img src="images/right-arrow.png" alt="" class="arr">
+        </a>
+        <h3>CNIC Upload</h3>
+        <div></div>
+    </div>
+
+    <div class="Preview">
+        <h2>Uploaded Images</h2>
+        <div class="ImagesUploaded">
+            <div class="Image front">
+            </div>
+            <div class="Image back">
+            </div>
+        </div>
+    </div>
+
+    <div class="uploadCNIC">
+        <div class="Upload">
+            <h3>CNIC front Image</h3>
+            <input type="file" id="cnicimg" accept="image/png, image/jpeg, image/pdf">
+            <button class="btn" id="FrontImage">Submit</button>
+
+        </div>
+        <div class="Upload">
+            <h3>CNIC Back Image</h3>
+            <input type="file" id="cnicbackimg" accept="image/png, image/jpeg, image/pdf">
+            <button class="btn" id="BackImage" accept="image/png, image/jpeg, image/pdf">Submit</button>
+        </div>
+    </div>
+
+    <script src="./JS/UploadCNIC.js"></script>
+</body>
+</html>

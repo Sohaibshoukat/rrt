@@ -192,3 +192,55 @@
 .Num{
     word-break: break-all;
 }
+
+@media screen and (max-width:900px) {
+    .RechargeBtn{
+        width: 60%;
+    }
+
+    .main{
+        width: 90%;
+        padding: 30px 20px;
+    }
+    
+    .main h3{
+        font-size: 22px;
+    }
+    
+    .main .AccountDetail{
+        width: 70%;
+    }
+    
+    .main .AccountDetail h4{
+        font-size: 20px;
+        color: #8d8d8d;
+    }
+    .main .AccountDetail img{
+        width: 150px;
+    }
+    
+    .main .AccountDetail p{
+        font-size: 18px;
+    }
+    
+    .Copy{
+        padding: 5px 20px;
+        font-size: 18px;
+    }
+    
+    .OrderDetail{
+        width: 70%;
+    }
+    
+    .Detail h3{
+        font-size: 18px;
+    }
+    
+    .confirm{
+        font-size: 18px;
+    }
+    
+    .Num{
+        word-break: break-all;
+    }
+}

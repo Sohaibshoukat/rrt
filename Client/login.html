@@ -13,7 +13,7 @@
                 <img src="./images/logo.png" class="logo-style">
             </div>
            
-            <form>
+            <form id="login-form" action="#">
                 <div class="form-group">
                    <img src="images/user.png" class="icon" alt="">
                     <input type="text" id="inputField" name="username" placeholder="Enter your username" required>
@@ -35,8 +35,8 @@
                     <a href="#">Online Service</a>
                     <a href="#">App Download</a>
                 </div>
-                <a href="/Client/login.html"><button type="button" class="login-button">Log in</button></a>
-                <a href="/Client/register.html"><button type="button" class="Register-button" > Register</button></a>
+               <button type="button" class="login-button" id="login">Log in</button>
+                <a href="register.html"><button type="button" class="Register-button" > Register</button></a>
             </form>
         </div>
     </div>
@@ -54,5 +54,6 @@
             }
         });
     </script>
+    <script src="./JS/login.js"></script>
 </body>
 </html>

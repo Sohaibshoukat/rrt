@@ -12,13 +12,13 @@
         <div>
             <div  id="head" >
                 <div>
-                    <a href="/Client/login.html">
+                    <a href="login.html">
                         <img src="images/side-arrow.png" class="side-arrow"  >
                     </a>
                   
                 </div>
                 <div>
-                    <a href="/Client/login.html">
+                    <a href="login.html">
                         <img src="images/cross.png" class="cross" >
                     </a>
                    
@@ -26,7 +26,7 @@
 
             </div>
            
-            <form>
+            <form id="registration-form" action="#">
                 <div class="form-group">
                    <img src="images/user.png" class="icon" alt="">
                     <input type="text" id="inputField" name="username" placeholder="Enter your username" required>
@@ -43,16 +43,18 @@
                 </div>
                 <div class="form-group">
                     <img src="images/email.png" class="icon" alt="">
-                     <input type="text" id="inputField" name="email" placeholder="Enter your email" required>
-                 </div>
+                    <input type="text" id="emailField" name="email" placeholder="Enter your email" required>
+                    <p id="emailError" class="error-message"></p>
+                </div>
+                
                  <div class="form-group">
                     <img src="images/invitation.png" class="icon" alt="">
                      <input type="text" id="inputField" name="Invitation-code" placeholder="Enter Invitation code" required>
                  </div>
                  <div class="form-group" style="display: flex;">
-                    <div class="country-code" ><p class="para-style">+92</p></div>
-                    <input type="text"  name="phone-number" placeholder="Enter your phone number" id="phone"  required>
-                    
+                    <div class="country-code"><p class="para-style">+92</p></div>
+                    <input type="text" name="phone-number" placeholder="Enter your phone number" id="phone" required>
+                    <p id="phoneError" class="error-message"></p>
                 </div>
                 <div class="form-group" style="display: flex;justify-content: space-between;">
                     <img src="images/veriy-code.png" class="icon" alt="">
@@ -65,8 +67,8 @@
                     <a href="#">Online Service</a>
                     <a href="#">App Download</a>
                 </div>
-                <a href="/Client/register.html"> <button type="button" class="login-button">Register</button></a>
-                <a href="/Client/login.html"><button type="button" class="Register-button">Log in</button></a>
+                    <button type="button" class="login-button" id="register">Register</button>
+                <a href="login.html"><button type="button" class="Register-button">Log in</button></a>
             </form>
         </div>
     </div>
@@ -97,6 +99,6 @@
             }
         });
     </script>
-    <script src="./JS/Authentication.js"></script>
+    <script src="./JS/Signup.js"></script>
 </body>
 </html>

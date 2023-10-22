@@ -3,7 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const JWT_KEY = "RRTGLOBALPLAY";
-const connection = require('../DB'); // Modify this path
+const connection = require('../DB');
+const multer = require('multer');
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Create a user
 router.post("/createuser", async (req, res) => {
@@ -25,8 +28,8 @@ router.post("/createuser", async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const secPassword = await bcrypt.hash(password, salt);
 
-        const insertQuery = "INSERT INTO users (email, username, password, phone, InvitationCode) VALUES (?, ?, ?, ?, ?)";
-        const insertValues = [email, username, secPassword, contact, code];
+        const insertQuery = "INSERT INTO users (email, username, password, phone, InvitationCode,balance) VALUES (?, ?, ?, ?, ?, ?)";
+        const insertValues = [email, username, secPassword, contact, code,0];
 
         const result = await executeQuery(insertQuery, insertValues);
 
@@ -48,13 +51,16 @@ router.post("/login", async (req, res) => {
         const user = await getUserByUserName(username);
 
         if (!user) {
-            return res.status(400).json({ Message: "Account not found" });
+            return res.status(400).json({ error: "Account not found" });
         }
 
         const passwordCompare = await bcrypt.compare(password, user.password);
 
+        console.log(user.password)
+        console.log(password)
+
         if (!passwordCompare) {
-            return res.status(400).json({ Message: "Invalid credentials" });
+            return res.status(400).json({ error: "Invalid credentials" });
         }
 
         const authToken = generateAuthToken(user.id);
@@ -65,6 +71,107 @@ router.post("/login", async (req, res) => {
         res.status(500).send('Error occurred');
     }
 });
+
+router.post("/UploadFrontImage",
+    upload.single('image')
+    , async (req, res) => {
+        try {
+            const token = req.body.token;
+            const image = req.file.buffer.toString('base64');
+
+            const password = jwt.verify(token, JWT_KEY);
+            const id = password.user.id;
+
+            const insertQuery = "UPDATE users SET CNIC_FRONT = ? WHERE id=?;";
+            const insertValues = [image, id];
+
+            const result = await executeQuery(insertQuery, insertValues);
+
+            res.json({ success: true });
+        } catch (error) {
+            console.log(99);
+            console.error(error);
+            res.status(500).send('Error occurred');
+        }
+});
+
+router.post("/UploadbackImage",
+    upload.single('image')
+    , async (req, res) => {
+        try {
+            const token = req.body.token;
+            const image = req.file.buffer.toString('base64');
+
+            const password = jwt.verify(token, JWT_KEY);
+            const id = password.user.id;
+
+            const insertQuery = "UPDATE users SET CNIC_BACK = ? WHERE id=?;";
+            const insertValues = [image, id];
+
+            const result = await executeQuery(insertQuery, insertValues);
+
+            res.json({ success: true });
+        } catch (error) {
+            console.log(99);
+            console.error(error);
+            res.status(500).send('Error occurred');
+        }
+});
+
+
+router.get('/FetchFrontImage/:token', async (req, res) => {
+    let success=false;
+    try {
+        const {token} = req.params;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        connection.query('SELECT CNIC_FRONT FROM users Where id= ?', [id], async (err, result) => {
+            const imageDataUri = `data:image/png;base64,${result[0].CNIC_FRONT}`;
+
+            return res.json({success:true,image: imageDataUri});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
+router.get('/FetchBackImage/:token', async (req, res) => {
+    try {
+        const {token} = req.params;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        connection.query('SELECT CNIC_BACK FROM users Where id= ?', [id], async (err, result) => {
+            const imageDataUri = `data:image/png;base64,${result[0].CNIC_BACK}`;
+
+            return res.json({success:true,image: imageDataUri});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
+router.get('/Fetchbalance/:token', async (req, res) => {
+    try {
+        const {token} = req.params;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        connection.query('SELECT balance FROM users Where id= ?', [id], async (err, result) => {
+            return res.json({success:true,result: result[0]});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
 
 // Function to check if a user with a given field (email/username) exists
 async function checkIfUserExists(field, value) {
@@ -102,39 +209,3 @@ function generateAuthToken(userId) {
 }
 
 module.exports = router;
-
-
-// router.get("/getID/:token", async (req, res) => {
-//     const { token } = req.params;
-//     try {
-//         const password = jwt.verify(token, JWT_KEY);
-//         const id = password.user.id;
-//         res.json({id})
-//     } catch (error) {
-//         console.error('Error fetching Earning', error);
-//         return res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
-
-
-// router.get("/getusers", async (req, res) => {
-//     try {
-//         const query = "SELECT id, email, name, account_type,contact FROM users";
-//         connection.query(query, async (err, result) => {
-//             if (err) {
-//                 console.error(err);
-//                 return res.status(500).send('Error occurred');
-//             }
-
-//             res.json(result);
-//         });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Error occurred');
-//     }
-// });
-
-
-
-
-// module.exports = router;
