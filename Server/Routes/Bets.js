@@ -8,27 +8,32 @@ const connection = require('../DB');
 // Create a user
 router.post("/createbet", async (req, res) => {
     try {
+        let newBalance;
         const { amount, matchTitle, percentage, token } = req.body;
 
         const password = jwt.verify(token, JWT_KEY);
         const id = password.user.id;
 
+        const currentTimestamp = new Date();
+        const formattedTimestamp = currentTimestamp.toISOString().slice(0, 19).replace('T', ' ');
+
         const insertQuery = "INSERT INTO bets (userid, matchTitle, date, amount,percentage, status,result) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        const insertValues = [id, matchTitle, Date.now(),amount,percentage, "New","Pending"];
+        const insertValues = [id, matchTitle,formattedTimestamp ,amount,percentage, "New","Pending"];
 
         const result = await executeQuery(insertQuery, insertValues);
 
-        connection.query('SELECT balance FROM users where id=?',[id], async (err, result3) => {
+        await connection.query('SELECT balance FROM users where id=?',[id], async (err, result3) => {
             if(err){
                 res.status(500).send('Error occurred');
             }
-            newBalance=result3[0]-amount;
-        });
+            console.log(result3[0].balance)
+            newBalance=result3[0].balance-amount;
+            const insertQuery2 = "UPDATE users SET balance = ? WHERE id=?;";
+            const insertValues2 = [newBalance, id];
 
-        const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
-        const insertValues2 = [newBalance, userid];
-
-        const result2 = await executeQuery(insertQuery2, insertValues2);
+            console.log(newBalance)    
+            const result2 = await executeQuery(insertQuery2, insertValues2);
+        });      
 
 
         res.json({ success: true });
