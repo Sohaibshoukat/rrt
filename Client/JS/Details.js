@@ -298,7 +298,7 @@ function updateBetData(data) {
                 <h2 class="red"><span id="amount">${item.Odds}</span>%</h2>
                 <h3>Odds</h3>
             </div>
-            <div class="Orderbtn">Orders can be made</div>
+            <a href="orderdetial.html"><div class="Orderbtn">Orders can be made</div></a>
         `;
 
         detailContentList.appendChild(betElement);

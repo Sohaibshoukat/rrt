@@ -1,0 +1,134 @@
+
+.list{
+    background: url("../images/listbg.png");
+    border-radius: 10px;
+    background-size: 100% 100%;
+    
+    height: 150px;
+   
+}
+.mact{
+    border-radius: 50%;
+    width: 3%;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.teams{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.d{
+    color: red;
+    padding: 15px;
+}
+.close{
+    color: rgb(45, 149, 254);
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+.det{
+    background-color: white;
+    margin-top: 20px;
+}
+.trasn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.trasn1{
+    display: flex;
+   
+    padding: 10px;
+    align-items: center;
+}
+.trasn4{
+    display: flex;
+   
+    padding: 10px;
+    align-items: center;
+}
+.trasn2{
+    margin-top: 20px;
+   background-color: white;
+    padding: 10px;
+    align-items: center;
+}
+.in{
+    border: none;
+    background: none;
+}
+.but{
+    border: 1px solid rgb(69, 171, 254);
+    color: rgb(69, 171, 254);
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+    width: 7%;
+    margin-left: 10px;
+}
+.but1{
+    border: 1px solid rgb(69, 171, 254);
+    color: rgb(255, 255, 255);
+    background-color: rgb(69, 171, 254);
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 20px 5px 20px;
+    width: 7%;
+}
+.but2{
+    border: 1px solid rgb(69, 171, 254);
+    color: rgb(69, 171, 254);
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 40px 15px 40px;
+    width: 50%;
+    margin-left: 10px;
+}
+.but3{
+    border: 1px solid rgb(69, 171, 254);
+    color: rgb(255, 255, 255);
+    background-color: rgb(69, 171, 254);
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 15px 0px 15px 0px;
+    width: 50%;
+}
+@media (max-width: 320px) {
+    .trasn1{
+        display: flex;
+       flex-wrap: wrap;
+        padding: 10px;
+        margin: 5px;
+        align-items: center;
+    }
+    .trasn4{
+        display: flex;
+       
+        padding: 10px;
+        align-items: center;
+    }
+.but2 .but3{
+    width: 30%;
+}
+.but {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+.but1 {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+.mact{
+    border-radius: 50%;
+    width: 10%;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+}

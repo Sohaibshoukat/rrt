@@ -1,0 +1,113 @@
+.rebcen1{
+    background: url("../images/agency.png");
+   
+    background-size: cover;
+    
+    height: 300px;
+   
+}
+.maindiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.total-bet{
+    background: linear-gradient(90deg,#1a324a,#0e1b29);
+    border-radius: 5px;
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    padding: 15px;
+    display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.balance{
+    background: white;
+    border-radius: 10px;
+    position: absolute;   
+    top: 55%; 
+    width: 95%;
+   
+    font-size: 14px;
+    padding: 15px;
+    display: flex;
+   flex-direction: column;
+   color: rgb(140, 140, 140);
+}
+.rech{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.rechi{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.payment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: black;
+    margin: 20px;
+}
+.froz{
+    color: #d1bd91;
+    text-align: center;
+
+}
+.agency-detail{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    margin-top: 15%;
+    
+}
+.thi{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.im{
+    width:3%; height:30px;
+
+}
+.det{
+    display: flex;
+    padding: 10px;
+    border-bottom: 0.5px solid rgb(202, 202, 202);
+}
+@media (max-width: 320px) {
+    .agency-detail{
+        
+        margin-top: 35%;
+        
+    }
+    .im{
+        width:8%; height:30px;
+    
+    }
+    .total-bet{
+        
+       
+        width: 92%;
+        height: 50px;
+        font-size: 14px;
+        padding: 5px;
+        display: flex;
+       justify-content: space-between;
+       align-items: center;
+    }
+    .balance{
+        
+        width: 90%;
+       
+       
+    }
+}
