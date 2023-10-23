@@ -10,13 +10,19 @@
 </head>
 
 <body>
+  <script>
+    if(!localStorage.getItem("token")){
+        window.open("login.html","_self");
+    }
+</script>
+
   <div class="headtop">
     <img src=" images/mebackground.png" class="bg-style" />
     <div class="profilee">
       <img src=" images/profile.png" class="profile" />
       <div class="vip-profile">
         <h5 class="vip">VIP0</h5>
-        <h4 class="profile-name">Afaf Kainat</h4>
+        <h4 class="profile-name" id="ProfileName"></h4>
       </div>
     </div>
     <div class="maindiv">
@@ -27,12 +33,12 @@
         </div>
         <div style="margin-right: 90px">
           <h3 class="froz">Total Bet</h3>
-          <p style="color: rgb(93, 179, 254)">0.00</p>
+          <p style="color: rgb(93, 179, 254)"><span id="Bet"></span></p>
         </div>
       </div>
       <div class="balance">
         <h3>Account Balance</h3>
-        <h1>0 = 0.0 (PKR)</h1>
+        <h1><span id="Balance"></span> = <span id="PKRbalance"></span> (PKR)</h1>
         <div class="payment">
           <div class="rechi">
             <a href="recharge.html">
@@ -118,7 +124,7 @@
         <img src=" images/right-arrow.png" alt="" width="20%" />
       </div>
     </div>
-    <div class="security">
+    <div class="security" onclick="Signout()">
       <div class="sec">
         <img src=" images/signout.png" alt="" width="12%" height="75%" />
         <p style="padding: 5px">Sign Out</p>
@@ -163,6 +169,9 @@
 
     </div>
   </footer>
+
+  <script src="./JS/MeProfile.js">
+  </script>
 </body>
 
 </html>

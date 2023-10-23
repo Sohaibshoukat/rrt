@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./styles/withdraw.css">
     <title>Withdraw</title>
 </head>
+
 <body class="body">
     <header class="header" style="padding: 20px 10px;">
         <a href="/">
@@ -26,63 +28,142 @@
     <div class="receivce">
         <h3>Receiving Bank Account</h3>
         <div class="usd">
-            <img src="images/add.png" alt="" width="1%" height="1%">
-            <p>Add the USDT address</p>
+            <input type="text" placeholder="Add your USDT Account address">
         </div>
     </div>
     <div class="account">
         <div class="bal">
             <p>Account Balance</p>
-            <p style="color: red;">0</p>
+            <p style="color: red;"><span id="Balance"></span></p>
             <div></div>
         </div>
         <div class="bal">
             <p>Current Exchange Rate</p>
-            <p >290</p>
+            <p>290</p>
             <div></div>
         </div>
         <div class="bal">
             <p>Withdrawal Fees</p>
-            <p >14%</p>
+            <p>14%</p>
             <div></div>
         </div>
         <div class="bal">
             <p>Withdrawal Amount</p>
-            <p ></p>
+            <p></p>
             <div></div>
         </div>
         <div class="bal">
-            <p>Withdrawal </p>
-            <p >0</p>
+            <p>Withdrawal</p>
+            <p>0</p>
             <div></div>
         </div>
         <div class="bal1">
             <p>The actual to account</p>
-            <p >0 <span style="color: red;">(USDT)</span></p>
+            <p>0 <span style="color: red;">(USDT)</span></p>
             <div></div>
         </div>
     </div>
     <div class="account">
-        <p class="fun" >Withdrawal Amount</p>
+        <p class="fun">Withdrawal Amount</p>
         <div class="all">
-            <p>Enter Withdrawal Amount</p>
-            <p>All</p>
+            <input type="number" placeholder="Enter Withdrawal Amount" id="withdrawAmount">
         </div>
         <p class="fun">Fund Password</p>
         <div class="all">
-            <p>Enter fund password</p>
-            <p>Forget Password?</p>
+            <input type="password" placeholder="Enter Fund Password" id="fundPassword">
         </div>
     </div>
-    <button class="sub">Submit</button>
+    <button class="sub" id="submitWithdrawal">Submit</button>
     <div style="padding: 20px;">
         <p>*The Number Of Daily Withdrawals Waived For Handling Fees 0</p>
         <p>*Maximum Number Of Withdrawals Per Day 5</p>
-        <p>*Maximum Withdrawal Amount  200000,Minimum Withdrawal
-            300</p>
-            <p>*Withdrawn Today 0</p>
-            <p>*Minimum Handling Fee 0,Maximum Handling Fee
-                99999999</p>
+        <p>*Maximum Withdrawal Amount 200000,Minimum Withdrawal 300</p>
+        <p>*Withdrawn Today 0</p>
+        <p>*Minimum Handling Fee 0,Maximum Handling Fee 99999999</p>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            // Make the API call to fetch user balance
+            let balance=0;
+            const token = localStorage.getItem("token"); // Replace with the actual user's token
+            try {
+                const response = await fetch(`http://localhost:5000/api/user/Fetchbalance/${token}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    balance=data.result.balance;
+                    document.getElementById("Balance").textContent = data.result.balance;
+                } else {
+                    console.error('Failed to fetch user balance');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+
+            // Handle withdrawal submission
+            const submitWithdrawalButton = document.getElementById("submitWithdrawal");
+            submitWithdrawalButton.addEventListener("click", async function () {
+                console.log(12334)
+                const withdrawalAmount = parseFloat(document.getElementById("withdrawAmount").value);
+                const fundPassword = document.getElementById("fundPassword").value;
+                const usdtAccountAddress = document.querySelector(".usd input").value; 
+
+                // Check if the withdrawal amount is valid and not greater than the balance
+                if (isNaN(withdrawalAmount) || withdrawalAmount <= 0 || withdrawalAmount > parseFloat(balance)) {
+                    alert("Invalid withdrawal amount or insufficient balance.");
+                    return;
+                }
+
+                // Fetch the user's fund password
+                try {
+                    // Fetch the user's fund password
+                    const fundPasswordResponse = await fetch(`http://localhost:5000/api/user/Fetchfundpassword/${token}`);
+                    if (fundPasswordResponse.ok) {
+                        const fundPasswordData = await fundPasswordResponse.json();
+                        const userFundPassword = fundPasswordData.result.fundpassword;
+
+                        // Check if the provided fund password matches the user's fund password
+                        if (fundPassword !== userFundPassword) {
+                            alert("Fund password does not match.");
+                            return;
+                        }
+
+                        // If both checks are successful, submit the withdrawal request
+                        const withdrawalRequest = {
+                            amount: withdrawalAmount, // Replace with an actual transaction ID
+                            token,
+                            address:usdtAccountAddress // Replace with the user's USDT account address
+                        };
+
+                        try {
+                            const createWithdrawalResponse = await fetch("http://localhost:5000/api/withdraw/createwithdraw", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(withdrawalRequest),
+                            });
+
+                            if (createWithdrawalResponse.ok) {
+                                // Withdrawal request submitted successfully
+                                alert("Withdrawal request submitted successfully.");
+                                window.open('/',"_self")
+                            } else {
+                                console.error("Failed to submit withdrawal request.");
+                            }
+                        } catch (error) {
+                            console.error(error);
+                            alert("An error occurred while submitting the withdrawal request.");
+                        }
+                    } else {
+                        console.error("Failed to fetch user's fund password.");
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

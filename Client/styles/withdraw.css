@@ -55,6 +55,13 @@
     padding: 20px;
     margin: 10px;
 }
+input{
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+}
+
 @media (max-width: 768px) {
     .sub{
         width: 95%;
