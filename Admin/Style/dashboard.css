@@ -1,0 +1,1069 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.header{
+    background-color: rgb(77, 0, 77);
+    display: flex;
+   
+    justify-content: space-between;
+     padding: 10px;
+}
+
+.header h1
+{
+    color: white;
+    font-size: 32px;
+    margin-top: 15px;
+    margin: 10px;
+}
+
+.header img{
+    height: 65px;
+    width: 65px;
+}
+
+.header button{
+   
+    padding: 20px;
+    background-color: skyblue;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    transition: 0.6s;
+}
+
+.header button:hover{
+    background-color:rgb(60, 148, 255);
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{   
+    .header h1
+    {
+        color: white;
+        font-size: 18px;
+        margin-top: 7%;
+    }   
+}
+
+@media screen and (max-width: 600px)
+{
+    .header button{
+        margin: 10px;
+        padding: 10px;
+        font-size: 12px;
+
+    }
+}
+
+.subheader {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgb(23, 19, 37);
+    color: white;
+}
+
+@media screen and (max-width: 600px)
+{
+    .subheader {
+         font-size: 10px;
+    }
+}
+
+.footer{
+    margin-top: 21%;
+}
+
+.footer h3{
+    padding: 20px;
+    background-color: rgb(36, 35, 44);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+@media screen and (max-width: 600px)
+{
+    .footer h3{
+        padding: 10px;
+        margin-top: 10%;
+        font-size: 14px;
+    }
+}
+
+.servicetab{
+    display: flex;
+    justify-content: center;
+}
+
+.servicetab table{
+    border-collapse: collapse;
+    margin-top: 5%;
+    width: 70%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+.servicetab th{
+      background-color: rgb(26, 91, 161);
+      padding: 10px;
+      color: white;
+}
+
+.servicetab td{
+    background-color: rgb(249, 239, 239);
+    padding: 5px;
+}
+
+#btnclrservice{
+    background-color: rgb(26, 91, 161);
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrservice:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremservice{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremservice:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    .servicetab table{
+        margin-top: 5%;
+        font-size: 5px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrservice{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremservice{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrsubscriber{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrsubscriber:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremsubscriber{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremsubscriber:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrsubscriber{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremsubscriber{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrwatchtime{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrwatchtime:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremwatchtime{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremwatchtime:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrwatchtime{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremwatchtime{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btndeny{
+    background-color: red;
+    color: white;
+    padding: 7px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 1px 1px 1px 1px palevioletred;
+    cursor: pointer;
+
+}
+
+#btndone{
+    background-color: rgb(0, 165, 231);
+    color: white;
+    padding: 7px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 1px 1px 1px 1px palevioletred;
+    cursor: pointer;
+}
+#btndeny:hover{
+    transform: scale(0.9);
+}
+
+#btndone:hover{
+    transform: scale(0.9);
+}
+
+.dashservices{
+font-size: 24px;
+display: flex;
+justify-content: center;
+margin: 5%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.container a{
+    text-decoration: none;
+}
+
+.container h2{
+    color: orange;
+    padding: 50px;
+    box-shadow: 1px 1px 1px 2px gray;
+    margin: 10px;
+    background-color: rgb(92, 17, 24);
+    border-radius: 4px;
+    font-size: 32px;
+}
+
+.container h2:hover{
+    transform: scale(0.9);
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        display: block;
+        padding:10px;
+        margin: 10px;
+    }
+    .container h2{
+        font-size: 26px;
+    }
+}
+
+
+#btnclrviews{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrviews:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremviews{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremviews:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrviews{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremviews{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrtiktok{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrtiktok:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremtiktok{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremtiktok:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrtiktok{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremtiktok{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrinsta{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrinsta:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnreminsta{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnreminsta:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrinsta{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnreminsta{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrwebads{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrwebads:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremwebads{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremwebads:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrwebads{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremwebads{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrfb{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrfb:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremfb{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremfb:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrfb{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremfb{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+#btnclrweb{
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:100px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnclrweb:hover{
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+#btnremweb{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    width:150px;
+    margin-top: 2%;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 2px pink;
+    transition: 0.6s;
+}
+
+#btnremweb:hover{
+    background-color: rgb(97, 97, 255);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnclrweb{
+        padding: 7px;
+        width:70px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #btnremweb{
+        padding: 7px;
+        width:120px;
+        margin-top: 2%;
+        font-size: 12px;
+    }
+}
+
+.dashwithdraw h1{
+    margin: 5%;
+    font-size: 42px;
+    text-align: center;
+
+}
+
+.dashwithdraw h2{
+    padding: 50px;
+    background-color: rgb(125, 125, 255);
+    width: fit-content;
+    margin-left: 36%;
+    border: 4px;   
+    color:white;
+    box-shadow: 1px 1px 1px 2px rgb(178, 178, 178);
+}
+
+.dashwithdraw h2:hover{
+    transform: scale(0.9);
+}
+
+.dashwithdraw a{
+    text-decoration: none;
+}
+
+
+.dashorder a{
+    text-decoration: none;
+
+}
+
+.dashorder h1{
+    margin:5%;
+    font-size: 38px;
+    text-align: center;
+}
+
+.dashorder h2{
+    background-color: orange;
+    color: azure;
+    padding: 50px;
+    box-shadow: 1px 1px 1px 2px rgb(178, 178, 178);
+    border-radius: 4px;
+    text-align: center;
+    width: fit-content;
+    margin-left: 37%;
+}
+
+.dashorder h2:hover{
+    transform: scale(0.9);
+}
+
+
+@media screen and (max-width:600px) {
+    .dashwithdraw h2
+    {
+    padding: 50px;
+    margin-left: 7%;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashwithdraw h1
+    {
+
+     font-size: 28px;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashorder h2
+    {
+    padding: 50px;
+    margin-left: 7%;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashorder h1
+    {
+     font-size: 28px;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashservices h1
+    {
+     font-size: 28px;
+}
+}
+
+.updatecontainer{   
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.updatecontainer td{
+    border: 1px solid gray;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.updatecontainer thead{
+    font-size: 22px;
+    background-color: green;
+    color: white;
+}
+
+.updatecontainer th{
+    padding: 10px;
+}
+
+
+#updatemethodbtn{
+    background-color: darkblue;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 15%;
+}
+
+#updatemethodbtn:hover{
+    background-color: green;
+    transition: 0.6s;
+}
+
+.updatecontainer button{
+    background-color: rgb(2, 2, 149);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    margin-left: 30px;
+}
+.updatecontainer button:hover{
+    background-color: rgb(3, 136, 188);
+    transition: 0.6s;
+}
+
+.updatecontainer input{
+    border: 1px solid rgb(35, 34, 34);
+    padding: 4px;
+}
+
+@media screen and (max-width:600px) {
+    .updatecontainer{
+   
+        position: absolute;
+        top: 20%;
+        left: 5%;
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .updatecontainer thead{
+        font-size: 14px;   
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .updatecontainer th{
+        padding: 2px;   
+  }    
+}
+@media screen and (max-width:600px) {
+    .updatecontainer td{
+        padding: 2px;   
+        font-size: 12px;
+  }    
+}
+
+
+
+@media screen and (max-width:600px) {
+    .updatecontainer button{
+        width: 40px;
+       font-size: 9px;
+       margin-left: 20%;
+       padding: 4px;
+  }    
+}
+@media screen and (max-width:600px) {
+    #updatemethodbtn{
+        margin-right: 1%;
+    }  
+}
+
+
+.footerupdate{
+    margin-top: 40%;
+    background-color: rgb(35, 28, 28);
+    color: white;
+    padding: 10px;
+}
+
+@media screen and (max-width:600px) {
+    .footerupdate{
+        font-size: 9px;
+        margin-top: 120%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .updatecontainer{
+      margin-left: 3%;
+    }
+}
+
+.dashuser h1{
+    margin: 5%;
+    font-size: 42px;
+    text-align: center;
+
+}
+
+.dashuser h2{
+    padding: 50px;
+    background-color: rgb(125, 125, 255);
+    width: fit-content;
+    margin-left: 37%;
+    border: 4px;   
+    color:white;
+    box-shadow: 1px 1px 1px 2px rgb(178, 178, 178);
+
+}
+
+.dashuser h2:hover{
+    transform: scale(0.9);
+}
+
+.dashuser a{
+    text-decoration: none;
+}
+
+@media screen and (max-width:600px) {
+    .dashuser h2
+    {
+    padding: 50px;
+    margin-left: 7%;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashuser h1
+    {
+     font-size: 28px;
+}
+}
+
+@media screen and (max-width:600px) {
+    .dashuser h1
+    {
+     font-size: 28px;
+}
+}
+
+.usercontainer{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+   
+}
+
+.usercontainer td{
+    
+    padding: 10px;
+    font-weight: bold;
+}
+
+.usercontainer thead{
+    font-size: 22px;
+    background-color: rgb(26, 91, 161);
+   
+    padding: 10px;
+    color: white;
+}
+
+.usercontainer th{
+    padding: 10px;
+}
+
+.usercontainer button{
+    background-color: rgb(53, 151, 255);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    margin-left: 30px;
+}
+.usercontainer button:hover{
+    background-color: rgb(3, 136, 188);
+    transition: 0.6s;
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer{
+        position: absolute;
+        top: 20%;
+        left: 0%;
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer thead{
+        font-size: 10px;   
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer th{
+        padding: 1px;   
+  }    
+}
+@media screen and (max-width:600px) {
+    .usercontainer td{
+        padding: 1px;   
+        font-size: 9px;
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer input{
+        width: 100px;
+  }    
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer button{
+        width: 40px;
+       font-size: 9px;
+       margin-left: 20%;
+       padding: 4px;
+  }    
+}
+
+.footeruser{
+    margin-top: 40%;
+    background-color: rgb(35, 28, 28);
+    color: white;
+    padding: 10px;
+}
+
+@media screen and (max-width:600px) {
+    .footeruser{
+        font-size: 9px;
+        margin-top: 145%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .usercontainer{
+      margin-left: 3%;
+    }
+}
+.reject{
+    background-color: rgb(249, 75, 75);color: white;border: none;border-radius: 5px;margin: 5px;padding: 10px;
+}
+.accept{
+    background-color: rgb(46, 164, 70);color: white;border: none;border-radius: 5px;margin: 5px;padding: 10px;
+}
