@@ -19,13 +19,27 @@
       <div></div>
     </div>
     <div class="list">
-        <p  class="d">@0%</p>
-        <div class="teams">
-            <img src="./images/Dila.png" alt="" class="mact">
-            <p style="color: rgb(53, 127, 255);">vs</p>
-            <img src="./images/Dinamo.png" alt="" class="mact">
+      <div class="AboveData">
+        <div class="Context">
+          <h5 id="Odds"></h5>
+          <p  class="d">@<span id="Percentage"></span> %</p>
         </div>
-        <p  class="close">Closing in</p>
+        <div class="time">
+          <p></p>
+        </div>
+      </div>
+        <div class="teams">
+          <div class="team">
+            <img src="" alt="" class="mact" id="Team1">
+            <p id="Name1"></p>
+          </div>
+            <p style="color: rgb(53, 127, 255);">vs</p>
+            <div class="team">
+              <img src="" alt="" class="mact" id="Team2">
+              <p id="Name2"></p>
+            </div>
+        </div>
+        <p  class="close">Closing in 0h 0m 0s</p>
     </div>
     <div class="det">
         <p  class="close">Processing Fee -0%</p>
@@ -43,25 +57,34 @@
 
         <div class="trasn1">
         
-           <button class="but">+100</button>
-           <button class="but">All</button>
-           <button class="but1">Customize</button>
-           <button class="but">Recharge</button>
+          <button class="but" id="plus100">+100</button>
+          <button class="but" id="addAll">All</button>
+          <button class="but but1" id="customize">Customize</button>          
+           <button class="but">
+            <a href="./recharge.html">Recharge
+              </a>
+            </button>
         </div>
        
     </div>
     <div class="trasn2">
         
-        <p>Account Balance: 0</p>
+        <p>Account Balance: <span id="Balance"></span></p>
      
       </div>
       
       <div class="trasn4">
         
-        <button class="but2">Cancel</button>
+        <button class="but2">
+          <a href="/">
+            Cancel
+          </a>
+        </button>
         
         <button class="but3">Confirm</button>
        
      </div>
+
+     <script src="JS/BetPlacing.js"></script>
   </body>
 </html>
