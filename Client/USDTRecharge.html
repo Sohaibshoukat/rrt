@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="./styles/global.css">
     <title>USDT</title>
 </head>
+
 <body>
-    
+
     <div class="main">
         <h3>Recharge Info</h3>
         <div class="AccountDetail">
@@ -36,12 +38,11 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Copy wallet address to clipboard
+        document.addEventListener("DOMContentLoaded", function () {
             const copyButton = document.getElementById("copyButton");
             const walletAddress = "0x53291E1192A529CC0fecaAb861e9C9B1cAEBd780";
-    
-            copyButton.addEventListener("click", function() {
+
+            copyButton.addEventListener("click", function () {
                 const textarea = document.createElement("textarea");
                 textarea.value = walletAddress;
                 document.body.appendChild(textarea);
@@ -50,25 +51,56 @@
                 document.body.removeChild(textarea);
                 alert("Wallet address copied to clipboard.");
             });
-    
+
             // Get the amount from session storage
             const amount = sessionStorage.getItem("Amount");
             if (amount) {
                 document.getElementById("Amount").textContent = amount;
             }
-    
+
             // Generate a random order number
             const orderNumber = "THUU" + Date.now() + Math.floor(Math.random() * 10000);
             document.getElementById("OrderNum").textContent = orderNumber;
+
+            // Confirm button click event
+            const confirmButton = document.getElementById("confirmButton");
+            confirmButton.addEventListener("click", async function () {
+                // Send data to the API to create a new recharge entry
+                const amount = sessionStorage.getItem("Amount");
+                if (!amount) {
+                    alert("Amount not found. Please go back and set the amount.");
+                    return;
+                }
+
+                const tid = orderNumber; // Use the order number as the transaction ID
+                const token = localStorage.getItem("token"); // Replace with the user's token (retrieve from local storage or another source)
+
+                try {
+                    const response = await fetch("http://localhost:5000/api/recharge/create", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ amount, tid, token }),
+                    });
+
+                    if (response.ok) {
+                        // Recharge request successful
+                        alert("Recharge request successful.");
+                        window.open("/", "_self"); // Redirect to index.html or another page
+                    } else {
+                        alert("Failed to create recharge request. Please try again.");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("An error occurred while creating a recharge request.");
+                }
+            });
         });
 
-        const confirmButton = document.getElementById("confirmButton");
-        confirmButton.addEventListener("click", function() {
-        // Redirect to index.html
-        window.open("/","_self");
-    });
 
     </script>
 
 </body>
+
 </html>

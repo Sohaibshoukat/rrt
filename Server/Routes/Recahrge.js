@@ -13,8 +13,12 @@ router.post("/create", async (req, res) => {
         const password = jwt.verify(token, JWT_KEY);
         const id = password.user.id;
 
+        const currentTimestamp = new Date();
+        const formattedTimestamp = currentTimestamp.toISOString().slice(0, 19).replace('T', ' ');
+
+
         const insertQuery = "INSERT INTO recharge (amount, t_id, userid, date, status) VALUES (?, ?, ?, ?, ?)";
-        const insertValues = [amount, tid, id, Date.now(), "New"];
+        const insertValues = [amount, tid, id, formattedTimestamp, "Pending"];
 
         const result = await executeQuery(insertQuery, insertValues);
 
@@ -26,20 +30,20 @@ router.post("/create", async (req, res) => {
 });
 
 router.put("/approve", async (req, res) => {
-    let newBalance=0;
+    let newBalance = 0;
     try {
-        const {id,balance,userid}=req.body
+        const { id, balance, userid } = req.body
 
         const insertQuery = "UPDATE recharge SET status = ? WHERE id=?;";
         const insertValues = ["Approved", id];
 
         const result = await executeQuery(insertQuery, insertValues);
 
-        connection.query('SELECT balance FROM users where id=?',[userid], async (err, result3) => {
-            if(err){
+        connection.query('SELECT balance FROM users where id=?', [userid], async (err, result3) => {
+            if (err) {
                 res.status(500).send('Error occurred');
             }
-            newBalance=result3[0]+balance;
+            newBalance = result3[0] + balance;
         });
 
         const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
@@ -57,8 +61,8 @@ router.put("/approve", async (req, res) => {
 router.get("/newRecharge", async (req, res) => {
     try {
 
-        connection.query('SELECT * FROM recharge WHERE status=?',["New"], async (err, result) => {
-            if(err){
+        connection.query('SELECT * FROM recharge WHERE status=?', ["New"], async (err, result) => {
+            if (err) {
                 res.status(500).send('Error occurred');
             }
             res.json(result);
@@ -71,12 +75,12 @@ router.get("/newRecharge", async (req, res) => {
 
 router.get("/getRecharge/:token", async (req, res) => {
     try {
-        const {token}=req.params;
+        const { token } = req.params;
         const password = jwt.verify(token, JWT_KEY);
         const id = password.user.id;
 
-        connection.query('SELECT * FROM recharge WHERE userid=?',[id], async (err, result) => {
-            if(err){
+        connection.query('SELECT * FROM recharge WHERE userid=?', [id], async (err, result) => {
+            if (err) {
                 res.status(500).send('Error occurred');
             }
             res.json(result);

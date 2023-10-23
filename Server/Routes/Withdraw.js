@@ -8,13 +8,15 @@ const connection = require('../DB');
 // Create a user
 router.post("/createwithdraw", async (req, res) => {
     try {
-        const { amount, tid, token } = req.body;
-
+        const { amount, token, address } = req.body;
         const password = jwt.verify(token, JWT_KEY);
         const id = password.user.id;
 
-        const insertQuery = "INSERT INTO withdraw (amount, t_id, user_id, date, status) VALUES (?, ?, ?, ?, ?)";
-        const insertValues = [amount, tid, id, Date.now(), "New"];
+        const currentTimestamp = new Date();
+        const formattedTimestamp = currentTimestamp.toISOString().slice(0, 19).replace('T', ' ');
+
+        const insertQuery = "INSERT INTO withdraw (amount, user_id, date, status,usdtad) VALUES (?, ?, ?, ?,?)";
+        const insertValues = [amount, id,formattedTimestamp, "Pending", address];
 
         const result = await executeQuery(insertQuery, insertValues);
 
