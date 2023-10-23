@@ -59,15 +59,14 @@ input{
     width: 91%;
     padding: 15px 15px 15px 60px;
     color: white;
-    
     border: 2px solid #f8f9f9;
     background-color: hsla(0,0%,100%,.3);
     border-radius: 5px;
 }
 .form-group input::placeholder {
-    color: #ffffff; /* Set the color you prefer */
+    color: #ffffff;
     font-size: 15px;
-    padding: 40px;
+    padding: 15px 15px 15px 15px;
 }
 .icon{
     width: 30px;height: 30px;position:absolute;padding: 10px;

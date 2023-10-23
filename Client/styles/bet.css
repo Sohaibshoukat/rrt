@@ -29,8 +29,10 @@
     height:80px;
 }
 .betpa{
+    height: 100vh;
+    padding: 20px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
