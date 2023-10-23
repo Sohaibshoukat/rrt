@@ -15,10 +15,16 @@
     <title>Dashboard | RRT.cc</title>
 </head>
 <body>
-    <div class="header">
-        
-        
-        
+    <script>
+        if(!localStorage.getItem("AdminToken")){
+            window.open("login.html","_self");
+        }
+        const Logout=()=>{
+            localStorage.removeItem("AdminToken");
+            window.open("login.html","_self");
+        }
+    </script>
+    <div class="header">       
         <div style="display: flex;">
             <img src="images/logo.png" alt="">
         <h1>RRT.cc</h1>
@@ -30,8 +36,7 @@
         <div></div>
         <div></div>
         <div>
-            <a href="login.html"><button id="btnadminlogout" class="fa fa-user" > Logout</button></a>
- 
+            <button id="btnadminlogout" class="fa fa-user" onclick="Logout()"> Logout</button>
         </div>
        ,
             </div>

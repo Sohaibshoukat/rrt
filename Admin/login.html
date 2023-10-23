@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Style/login.css">
-    <title>Login</title>
+    <title>Admin Login</title>
 </head>
 <body class="background-image">
     <div style="background-color: rgba(34, 34, 34, 0.5); height: 100%;">
@@ -35,17 +35,49 @@
     <script>
         const passwordInput = document.getElementById("password");
         const togglePasswordIcon = document.getElementById("togglePassword");
-
+        const loginButton = document.getElementById("login");
+    
         togglePasswordIcon.addEventListener("click", function () {
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
-                
             } else {
                 passwordInput.type = "password";
-                
+            }
+        });
+    
+        loginButton.addEventListener("click", async () => {
+            const username = document.getElementById("inputField").value;
+            const password = document.getElementById("password").value;
+    
+            try {
+                const response = await fetch('http://localhost:5000/api/admin/Adminlogin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success) {
+                        localStorage.setItem("AdminToken",data.adminauthToken);
+                        window.open("/mainDashboard.html","_self");
+                    } else {
+                        // Handle unsuccessful login
+                        alert("Login failed: " + data.error);
+                    }
+                } else {
+                    // Handle HTTP error
+                    console.error("HTTP error: " + response.status);
+                }
+            } catch (error) {
+                // Handle network error
+                console.error("Network error: " + error);
             }
         });
     </script>
+    
     <script src="./JS/login.js"></script>
 </body>
 </html>

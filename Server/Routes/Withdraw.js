@@ -41,8 +41,8 @@ router.put("/approve", async (req, res) => {
             if(err){
                 res.status(500).send('Error occurred');
             }
-            newBalance=result3[0]-balance;
-            const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
+            newBalance=result3[0].balance-balance;
+            const insertQuery2 = "UPDATE users SET balance = ? WHERE id=?;";
             const insertValues2 = [newBalance, userid];
     
             const result2 = await executeQuery(insertQuery2, insertValues2);
@@ -59,7 +59,7 @@ router.put("/approve", async (req, res) => {
 router.get("/newwithdraw", async (req, res) => {
     try {
 
-        connection.query('SELECT * FROM withdraw WHERE status=?',["New"], async (err, result) => {
+        connection.query('SELECT * FROM withdraw WHERE status=?',["Pending"], async (err, result) => {
             if(err){
                 res.status(500).send('Error occurred');
             }
@@ -89,6 +89,22 @@ router.get("/getWithdraw/:token", async (req, res) => {
     }
 });
 
+router.put("/Deny", async (req, res) => {
+    let newBalance = 0;
+    try {
+        const { id } = req.body
+
+        const insertQuery = "UPDATE withdraw SET status = ? WHERE id=?;";
+        const insertValues = ["Denied", id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+        res.json({ success: true });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
 
 
 // Function to execute a SQL query
