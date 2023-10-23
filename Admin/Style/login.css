@@ -1,0 +1,189 @@
+.background-image{
+    background-image: url("/images/background-image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+body{
+    margin: 0 auto;
+}
+.logo-style{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    background-color: white;
+    border: 2px solid #fff ;
+}
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin: 35px;
+}
+.verify{
+    margin-left: 90px;
+    width: 100px;
+    margin-right: 40px;
+}
+.cross{
+    width: 30px;height: 25px;
+}
+.side-arrow{
+    width: 20px;height: 30px;
+}
+.country-code{
+    background-color: aliceblue;width: 23%;margin-right:20px;border-radius:5px;
+}
+.ver{
+    width: 100px;margin-right: 40px;
+}
+#head{
+    display: flex;
+    justify-content: space-between; 
+    padding: 30px 120px 0px 90px;
+}
+.form-group input {
+    width: 91%;
+    padding: 15px 15px 15px 60px;
+    color: white;
+    border: 2px solid #f8f9f9;
+    background-color: hsla(0,0%,100%,.3);
+    border-radius: 5px;
+}
+.form-group input::placeholder {
+    color: #ffffff;
+    font-size: 15px;
+    padding: 15px 15px 15px 15px;
+}
+.icon{
+    width: 30px;height: 30px;position:absolute;padding: 10px;
+}
+.icon2{
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    padding: 20px;  
+    right: 3%; 
+    margin-top:23px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.para-style{
+    margin-top: 10px;margin-bottom:10px;font-weight: bold;font-size: 20px;text-align: center;
+}
+form{
+    width: 95%;
+    padding: 35px;
+    
+}
+.forgot-password{
+    display: flex;
+    justify-content: space-between;
+}
+.forgot-password a{
+    margin-right: 70px;
+    margin-top: 10px;
+   margin-left: 40px;
+   font-size: 20px;
+    text-decoration: none; /* Remove underlines from the link */
+    color: #ffffff; /* Set the link color */
+}
+
+.login-button {
+    width: 92%;
+    margin: 38px;
+    padding: 15px;
+    font-size: 20px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Register-button{
+    width: 92%;
+    font-size: 20px;
+    margin: -30px 10px 30px 38px;
+    padding: 15px;
+    background: linear-gradient(180deg,#565656,#303030);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.code{
+    width: 30%;
+}
+#phone{
+    width: 67%;
+}
+.verification-code {
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+@media screen and (max-width:900px) {
+    .background-image{
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width:650px) {
+    form{
+        width: 95%;
+        padding: 10px;   
+    }
+    .form-group{
+        margin: 20px 5px;
+    }
+    .verify{
+        margin-left: 20px;
+        width: 100px;
+        margin-right: 5px;
+    }
+    .forgot-password a{
+        margin-right: 20px;
+        margin-top: 10px;
+       margin-left: 10px;
+       font-size: 16px;
+    }
+    .form-group input {
+        width: -webkit-fill-available;
+        padding: 15px 15px 15px 15px;
+        color: white;        
+        border: 2px solid #f8f9f9;
+        background-color: hsla(0,0%,100%,.3);
+        border-radius: 5px;
+    }
+    .login-button {
+        width: 95%;
+        margin: 20px 10px;
+        font-size: 16px;
+    }
+    .Register-button{
+        width: 95%;
+        margin: 20px 10px;
+        font-size: 16px;
+    }
+    #head{
+        padding: 30px 20px 0px 20px;
+    }
+}

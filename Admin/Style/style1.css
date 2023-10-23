@@ -1,0 +1,199 @@
+.nav
+{
+    background-color: rgb(77, 0, 77);
+}
+
+.nav ul
+{
+    list-style: none;
+    padding: 35px;
+}
+
+.nav li{
+    display: flex;
+    float: right;
+}
+
+.nav a
+{
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 22px;
+    color: white;
+}
+
+#mainlogo{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    transition: transform .8s;
+}
+
+#mainlogo:hover
+{
+transform: rotateY(180deg);
+}
+
+.nav a:hover{
+    color: rgb(157, 143, 143);
+}
+
+.footer ul{
+    display: inline-block;
+    list-style: none;
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+    line-height: 40px;
+}
+
+.footer p{
+    line-height: 50px;
+}
+
+.footer span{
+    color: white;
+    font-size: 20px;
+    display: block;
+    border-bottom: 2px solid blue;
+    width: fit-content;
+}
+
+.footer h3{
+    border-bottom: 2px solid blue;
+    line-height: 50px;
+    width: fit-content;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(35, 81, 106);
+    padding: 50px;
+    color: white;
+    margin-top: -1%;
+}
+
+.footer a:hover{
+    color: rgb(8, 171, 8);
+    transform: scale(1.5);
+    transition: 0.6s;
+}
+
+.subfooter{
+    color: white;
+    background-color: rgb(12, 17, 58);
+    padding: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width: 600px)
+{
+    .nav a
+    {
+        font-size: 11px;
+        color: rgb(144, 214, 5);
+    }  
+}
+
+@media screen and (max-width: 600px)
+{
+    .nav ul
+    {
+       position: absolute;
+       margin-left: 90px;
+       margin-top: 10px;
+       padding: 0px;
+    }  
+}
+
+@media screen and (max-width: 600px)
+{
+    .nav img
+    {
+        width: 50px;
+        height: 50px;     
+    } 
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+      font-size: 12px;
+     }   
+}
+
+@media screen and (max-width: 600px) {
+    .footer a{
+      line-height: 40px;
+      margin-left: 40px;
+      width: 100%;
+     }   
+}
+@media screen and (max-width: 600px) {
+    .footer h3{
+      width: 100%;
+      line-height: 20px;
+      margin-left: 30px;
+      padding: 10px;
+      border: none;
+     }   
+}
+@media screen and (max-width: 600px) {
+    .footer span{
+        font-size: 14px;
+        font-weight: bold;
+      border: none;
+     }   
+}
+@media screen and (max-width: 600px) {
+    .footer p{
+      line-height: 30px;
+     }   
+}
+@media screen and (max-width: 600px) {
+    .subfooter{
+      font-size: 12px;
+     }   
+}
+
+.webadearncontainer
+{
+    margin-top: 3%;
+    background-color: orange;
+    width: fit-content;
+    padding: 40px;
+    color: white;
+}
+
+.webadearncontainer img
+{
+    width:300px;
+    height: 370px;
+}
+.webadearnsubcontainer h2{
+    padding: 20px;
+}
+
+
+.hidden{
+    display: none;
+}
+
+
+@media screen and (max-width:600px) {
+    .webadearncontainer
+{
+   padding: 5px;
+}
+}
+
+
+@media screen and (max-width:600px) {
+    .webadearncontainer img
+        {
+    width: 100px;
+   height: 150px;
+    }
+}
