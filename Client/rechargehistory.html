@@ -1,23 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/global.css" />
-    <link rel="stylesheet" href="./styles/history.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="invite">
-      <a href="me.html">
-        <img src="images/right-arrow.png" alt="" class="arr" />
-      </a>
-      <h3>Recharge record</h3>
-      <div></div>
-    </div>
-    <div class="history">
-        <img src="images/record.png" alt="" class="rec" >
-        <p>Absolutely Empty</p>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/global.css" />
+  <link rel="stylesheet" href="./styles/history.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="invite">
+    <a href="me.html">
+      <img src="images/right-arrow.png" alt="" class="arr" />
+    </a>
+    <h3>Recharge record</h3>
+    <div></div>
+  </div>
+  <div class="empty-message">
+    <img src="images/record.png" alt="" class="rec">
+    <p>Absolutely Empty</p>
+  </div>
+  <div class="history">
+
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", async function () {
+  // Make the API call to fetch recharge history
+  const token = localStorage.getItem("token"); // Replace with the actual user's token
+  try {
+    const response = await fetch(`http://localhost:5000/api/recharge/getRecharge/${token}`);
+    if (response.ok) {
+      const rechargeHistory = await response.json();
+
+      // Get the history container and the empty message container
+      const historyContainer = document.querySelector(".history");
+      const emptyMessage = document.querySelector(".empty-message");
+
+      // Check if the recharge history is empty
+      if (rechargeHistory.length === 0) {
+        // If it's empty, show the empty message and hide the history container
+        emptyMessage.style.display = "block";
+        historyContainer.style.display = "none";
+      } else {
+        // If there is history, hide the empty message and populate the history container
+        emptyMessage.style.display = "none";
+        historyContainer.style.display = "block";
+
+        rechargeHistory.forEach(record => {
+          const matchElement = document.createElement("div");
+          matchElement.classList.add("historyRecord");
+
+          matchElement.innerHTML = `
+            <div class="Row Row1">
+              <h2><span id="Status">${record.status}</span></h2>
+              <h2><span id="Amount">${record.amount}</span></h2>
+            </div>
+            <div class="Row">
+              <h2>Date</h2>
+              <h2><span id="Date">${record.date}</span></h2>
+            </div>
+            <div class="Row">
+              <h2>Type</h2>
+              <h2>Offline USDT</h2>
+            </div>
+          `;
+
+          historyContainer.appendChild(matchElement);
+        });
+      }
+    } else {
+      console.error('Failed to fetch recharge history');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+  </script>
+</body>
+
 </html>

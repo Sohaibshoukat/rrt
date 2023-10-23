@@ -72,9 +72,23 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.post("/UploadFrontImage",
-    upload.single('image')
-    , async (req, res) => {
+router.get('/UserGet/:token', async (req, res) => {
+    try {
+        const {token} = req.params;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        connection.query('SELECT * FROM users Where id= ?', [id], async (err, result) => {
+            return res.json({success:true,result: result[0]});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
+router.post("/UploadFrontImage", upload.single('image') , async (req, res) => {
         try {
             const token = req.body.token;
             const image = req.file.buffer.toString('base64');
@@ -95,9 +109,28 @@ router.post("/UploadFrontImage",
         }
 });
 
-router.post("/UploadbackImage",
-    upload.single('image')
-    , async (req, res) => {
+router.post("/fundpassword", async (req, res) => {
+        try {
+            const token = req.body.token;
+            const fundpassword = req.body.password;
+
+            const password = jwt.verify(token, JWT_KEY);
+            const id = password.user.id;
+
+            const insertQuery = "UPDATE users SET fundpassword = ? WHERE id=?;";
+            const insertValues = [fundpassword, id];
+
+            const result = await executeQuery(insertQuery, insertValues);
+
+            res.json({ success: true });
+        } catch (error) {
+            console.log(99);
+            console.error(error);
+            res.status(500).send('Error occurred');
+        }
+});
+
+router.post("/UploadbackImage", upload.single('image') , async (req, res) => {
         try {
             const token = req.body.token;
             const image = req.file.buffer.toString('base64');
@@ -164,6 +197,22 @@ router.get('/Fetchbalance/:token', async (req, res) => {
         const id = password.user.id;
 
         connection.query('SELECT balance FROM users Where id= ?', [id], async (err, result) => {
+            return res.json({success:true,result: result[0]});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
+router.get('/Fetchfundpassword/:token', async (req, res) => {
+    try {
+        const {token} = req.params;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        connection.query('SELECT fundpassword FROM users Where id= ?', [id], async (err, result) => {
             return res.json({success:true,result: result[0]});
         });
     } catch (error) {

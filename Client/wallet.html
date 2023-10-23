@@ -23,7 +23,7 @@
         <div class="WalletBalance">
             <div class="Balance">
                 <img src="./images/Coins.png" alt="">
-                <h2>Balance: PKR 0</h2>
+                <h2>Balance: PKR <span id="Balance"></span></h2>
             </div>
             <div class="Balance">
                 <h3>PKR</h3>
@@ -65,6 +65,39 @@
         </div>
     </div>
 
+<script>
+    async function getUserData() {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/UserGet/${token}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+      if (response.ok) {
+        const data = await response.json();
+  
+        const balanceElement = document.getElementById('Balance');// Assuming 'name' is the property in the API response for the user's name
+        if(data.result.balance==null){
+            balanceElement.textContent = 0; // Assuming 'balance' is the property in the API response for the user's balance
+        }
+        else{
+            balanceElement.textContent = data.result.balance; // Assuming 'balance' is the property in the API response for the user's balance
+
+        }
+
+      } else {
+        console.error('API call failed');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  // Call the function on page load
+  window.onload = getUserData;
+</script>
 
 </body>
 </html>
