@@ -26,12 +26,9 @@ router.post("/createbet", async (req, res) => {
             if(err){
                 res.status(500).send('Error occurred');
             }
-            console.log(result3[0].balance)
             newBalance=result3[0].balance-amount;
             const insertQuery2 = "UPDATE users SET balance = ? WHERE id=?;";
-            const insertValues2 = [newBalance, id];
-
-            console.log(newBalance)    
+            const insertValues2 = [newBalance, id];  
             const result2 = await executeQuery(insertQuery2, insertValues2);
         });      
 

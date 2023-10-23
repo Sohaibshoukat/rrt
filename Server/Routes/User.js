@@ -56,9 +56,6 @@ router.post("/login", async (req, res) => {
 
         const passwordCompare = await bcrypt.compare(password, user.password);
 
-        console.log(user.password)
-        console.log(password)
-
         if (!passwordCompare) {
             return res.status(400).json({ error: "Invalid credentials" });
         }
@@ -103,7 +100,6 @@ router.post("/UploadFrontImage", upload.single('image') , async (req, res) => {
 
             res.json({ success: true });
         } catch (error) {
-            console.log(99);
             console.error(error);
             res.status(500).send('Error occurred');
         }
@@ -124,7 +120,6 @@ router.post("/fundpassword", async (req, res) => {
 
             res.json({ success: true });
         } catch (error) {
-            console.log(99);
             console.error(error);
             res.status(500).send('Error occurred');
         }
@@ -145,7 +140,6 @@ router.post("/UploadbackImage", upload.single('image') , async (req, res) => {
 
             res.json({ success: true });
         } catch (error) {
-            console.log(99);
             console.error(error);
             res.status(500).send('Error occurred');
         }
@@ -214,6 +208,18 @@ router.get('/Fetchfundpassword/:token', async (req, res) => {
 
         connection.query('SELECT fundpassword FROM users Where id= ?', [id], async (err, result) => {
             return res.json({success:true,result: result[0]});
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Network error occurred');
+    }
+});
+
+router.get('/getusers', async (req, res) => {
+    try {
+
+        connection.query('SELECT * FROM users', async (err, result) => {
+            return res.json({success:true,result: result});
         });
     } catch (error) {
         console.error(error);

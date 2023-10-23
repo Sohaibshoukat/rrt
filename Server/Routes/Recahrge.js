@@ -37,14 +37,17 @@ router.put("/approve", async (req, res) => {
         const insertQuery = "UPDATE recharge SET status = ? WHERE id=?;";
         const insertValues = ["Approved", id];
 
+        // console.log(userid)
+
         const result = await executeQuery(insertQuery, insertValues);
 
         connection.query('SELECT balance FROM users where id=?', [userid], async (err, result3) => {
             if (err) {
                 res.status(500).send('Error occurred');
             }
-            newBalance = result3[0] + balance;
-            const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
+            // console.log(result3);
+            newBalance = result3[0].balance + balance;
+            const insertQuery2 = "UPDATE users SET balance = ? WHERE id=?;";
             const insertValues2 = [newBalance, userid];
             const result2 = await executeQuery(insertQuery2, insertValues2);
         });
@@ -56,10 +59,27 @@ router.put("/approve", async (req, res) => {
     }
 });
 
+router.put("/Deny", async (req, res) => {
+    let newBalance = 0;
+    try {
+        const { id } = req.body
+
+        const insertQuery = "UPDATE recharge SET status = ? WHERE id=?;";
+        const insertValues = ["Denied", id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+        res.json({ success: true });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
 router.get("/newRecharge", async (req, res) => {
     try {
 
-        connection.query('SELECT * FROM recharge WHERE status=?', ["New"], async (err, result) => {
+        connection.query('SELECT * FROM recharge WHERE status=?', ["Pending"], async (err, result) => {
             if (err) {
                 res.status(500).send('Error occurred');
             }
