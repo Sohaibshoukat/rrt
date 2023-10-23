@@ -12,7 +12,7 @@ router.post("/createAdmin", async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const secPassword = await bcrypt.hash(password, salt);
 
-        const insertQuery = "INSERT INTO users (username, password) VALUES (?, ?)";
+        const insertQuery = "INSERT INTO admin (username, password) VALUES (?, ?)";
         const insertValues = [username, secPassword];
 
         const result = await executeQuery(insertQuery, insertValues);
@@ -35,21 +35,20 @@ router.post("/Adminlogin", async (req, res) => {
         const user = await getUserByUserName(username);
 
         if (!user) {
-            return res.status(400).json({ error: "Account not found" });
+            return res.json({ error: "Account not found" });
         }
 
         const passwordCompare = await bcrypt.compare(password, user.password);
 
         if (!passwordCompare) {
-            return res.status(400).json({ error: "Invalid credentials" });
+            return res.json({ error: "Invalid credentials" });
         }
 
         const adminauthToken = generateAuthToken(user.id);
 
         res.json({ success: true, adminauthToken });
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error occurred');
+        res.status(500).send({Error:'Error occurred'});
     }
 });
 

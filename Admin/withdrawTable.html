@@ -10,6 +10,11 @@
     <title>Withdraw | Dashboard</title>
 </head>
 <body>
+    <script>
+        if(!localStorage.getItem("AdminToken")){
+            window.open("login.html","_self");
+        }
+    </script>
     <div class="header">
         <div style="display: flex;">
           <img src="images/logo.png" alt="">
@@ -30,48 +35,12 @@
         <table >
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>User Name</th>
-                    <th>Email</th>
+                    <th>Sno</th>
+                    <th>Account Num</th>
+                    <th>Date</th>
                     <th>Amount</th>
-                    
-                    <th>Account No</th>
-                
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>ABC</td>
-                    <td>abc@gmail.com</td>
-                    <td>1200</td>
-                    <td>23-10-2023</td>
-                    <td>
-                        <button class="accept">Accept</button>
-                        <button class="reject" >Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>ABC</td>
-                    <td>abc@gmail.com</td>
-                    <td>1200</td>
-                    <td>23-10-2023</td>
-                    <td>
-                        <button class="accept">Accept</button>
-                        <button class="reject" >Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>ABC</td>
-                    <td>abc@gmail.com</td>
-                    <td>1200</td>
-                    <td>23-10-2023</td>
-                    <td>
-                        <button class="accept">Accept</button>
-                        <button class="reject" >Reject</button>
-                    </td>
-                </tr>
+                    <th>Staus</th>
+                    <th>Descision</th>
             </thead>
             <tbody id="Withdraw">
 
