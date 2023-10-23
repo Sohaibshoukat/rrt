@@ -44,12 +44,10 @@ router.put("/approve", async (req, res) => {
                 res.status(500).send('Error occurred');
             }
             newBalance = result3[0] + balance;
+            const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
+            const insertValues2 = [newBalance, userid];
+            const result2 = await executeQuery(insertQuery2, insertValues2);
         });
-
-        const insertQuery2 = "UPDATE users SET blanance = ? WHERE id=?;";
-        const insertValues2 = [newBalance, userid];
-
-        const result2 = await executeQuery(insertQuery2, insertValues2);
 
         res.json({ success: true });
     } catch (error) {

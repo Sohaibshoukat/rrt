@@ -262,58 +262,13 @@ const Project=[
     }
 ]
 
-
+const confirmButton = document.querySelector('.but3');
+confirmButton.addEventListener('click', makeBetRequest);
 const urlParams = new URLSearchParams(window.location.search);
-const matchId = urlParams.get('id'); 
-const fullButton = document.getElementById("full");
-const halfButton = document.getElementById("Half");
-const detailContentList = document.querySelector(".detail_content_list"); // Update this selector
+const Percentage = urlParams.get('Bet');
+const Title = urlParams.get('Title');
+let match;
 
-// Add click event listeners to the Full and Half buttons
-fullButton.addEventListener("click", () => {
-    fullButton.classList.add("Selected");
-    halfButton.classList.remove("Selected");
-    halfButton.classList.add("UnSelected");
-    updateBetData(FullBet,"Full");
-});
-
-halfButton.addEventListener("click", () => {
-    halfButton.classList.add("Selected");
-    fullButton.classList.remove("Selected");
-    fullButton.classList.add("UnSelected");
-    updateBetData(HalfBet,"Half");
-});
-
-// Function to update the bet data based on the selected type (Full or Half)
-function updateBetData(data,title) {
-    detailContentList.innerHTML = '';
-    let Title=title
-
-    data.forEach((item) => {
-        const betElement = document.createElement("div");
-        betElement.classList.add("detail_content_list-body");
-
-        betElement.innerHTML = `
-            <div class="score-left">
-                <h2>${item.Score}</h2>
-                <h3>Score Betting</h3>
-            </div>
-            <div class="profit">
-                <h2 class="red"><span id="amount">${item.Odds}</span>%</h2>
-                <h3>Odds</h3>
-            </div>
-            <a href="PlaceBet.html?Bet=${item.Odds}&Title=${Title}"><div class="Orderbtn">Orders can be made</div></a>
-        `;
-
-        detailContentList.appendChild(betElement);
-    });
-}
-
-// Initially display the FullBet data
-updateBetData(FullBet,"Full");
-
-
-// Function to get the current date and time in the desired format
 function getCurrentDateTime() {
     const now = new Date();
     const year = now.getFullYear();
@@ -326,39 +281,152 @@ function getCurrentDateTime() {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
-// Function to find and display match details based on the provided ID
-function displayMatchDetails(id) {
-    const match = Project.find((item) => item.id === id);
-    sessionStorage.setItem("Matchid",id);
+function displayMatchDetails() {
+    let id = sessionStorage.getItem("Matchid");
+    match = Project.find((item) => item.id === id);
+    let Score
+    if(Title=="Full"){
+       const Find = FullBet.find((item) => item.Odds == Percentage);
+       Score=Find.Score;
+    }
+    else{
+        const Find = HalfBet.find((item) => item.Odds == Percentage);
+       Score=Find.Score;
+
+    }
+
 
     if (match) {
-        const dateTimeElement = document.querySelector('.mainHead p');
-        const titleElement = document.querySelector('.mainHead h5');
-        const teamElements = document.querySelectorAll('.Team');
-
-        // Display current date and time
+        const dateTimeElement = document.querySelector('.time p');
         dateTimeElement.textContent = getCurrentDateTime();
 
+        const Percen = document.getElementById('Percentage');
+        Percen.textContent = Percentage;
+
+        const Odd = document.getElementById('Odds');
+        Odd.textContent = Score;
+
+
+        const Team1 = document.getElementById("Team1");
+        const Name1 = document.getElementById("Name1");
+        const Team2 = document.getElementById("Team2");
+        const Name2 = document.getElementById("Name2");
+
         // Display match details
-        titleElement.textContent = match.title;
+        Team1.src = `./images/${match.Team[0].img}.png`;
+        Team1.alt = match.Team[0].name;
+        Name1.textContent = match.Team[0].name;
 
-        // Update the team logos
-        teamElements[0].querySelector('img').src = `./images/${match.Team[0].img}.png`;
-        teamElements[0].querySelector('img').alt = match.Team[0].name;
-        teamElements[0].querySelector('p').textContent = match.Team[0].name;
-
-        teamElements[1].querySelector('img').src = `./images/${match.Team[1].img}.png`;
-        teamElements[1].querySelector('img').alt = match.Team[1].name;
-        teamElements[1].querySelector('p').textContent = match.Team[1].name;
-
-
+        Team2.src = `./images/${match.Team[1].img}.png`;
+        Team2.alt = match.Team[1].name;
+        Name2.textContent = match.Team[1].name;
     } else {
         // Handle the case where no match is found
         console.log('Match not found');
     }
 }
 
+displayMatchDetails()
+
+async function getUserData() {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/UserGet/${token}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+      if (response.ok) {
+        const data = await response.json();
+  
+        const balanceElement = document.getElementById('Balance');// Assuming 'name' is the property in the API response for the user's name
+        if(data.result.balance==null){
+            balanceElement.textContent = 0; // Assuming 'balance' is the property in the API response for the user's balance
+        }
+        else{
+            balanceElement.textContent = data.result.balance; // Assuming 'balance' is the property in the API response for the user's balance
+
+        }
+
+      } else {
+        console.error('API call failed');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+}
+
+window.onload = getUserData;
+
+const inputField = document.querySelector('.in');
+
+const plus100Button = document.getElementById('plus100');
+const addAllButton = document.getElementById('addAll');
+const customizeButton = document.getElementById('customize');
+
+plus100Button.addEventListener('click', () => {
+  let currentValue = parseFloat(inputField.value) || 0;
+  currentValue += 100;
+  inputField.value = currentValue;
+});
+
+addAllButton.addEventListener('click', () => {
+  let balance = parseFloat(document.getElementById('Balance').textContent) || 0;
+  inputField.value = balance;
+});
+
+customizeButton.addEventListener('click', () => {
+    inputField.value = "";
+});
 
 
-// Call the function with the matchId from the URL
-displayMatchDetails(matchId);
+function makeBetRequest() {
+    const inputField = document.querySelector('.in');
+    const transactionAmount = parseFloat(inputField.value);
+    const balance = parseFloat(document.getElementById('Balance').textContent);
+
+    // Check if the transaction amount is empty or not a number
+    if (isNaN(transactionAmount) || transactionAmount <= 0) {
+        alert('Please enter a valid transaction amount.');
+        return;
+    }
+
+    // Check if the transaction amount is greater than the balance
+    if (transactionAmount > balance) {
+        alert('Transaction amount cannot exceed your account balance.');
+        return;
+    }
+
+    // You can replace the URL with your actual API endpoint
+    const apiURL = 'http://localhost:5000/api/bet/createbet';
+
+    const token = localStorage.getItem('token');
+    const requestData = {
+        matchTitle:match.title,
+        amount: transactionAmount,
+        token:token,
+        percentage:Percentage
+        // Add other necessary data for the bet request
+    };
+
+    fetch(apiURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+    })
+        .then(response => {
+            if (response.ok) {
+                alert('Bet request was successful!');
+                window.open("/","_self");
+            } else {
+                // Handle the case where the API call failed
+                console.error('Bet request failed');
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}

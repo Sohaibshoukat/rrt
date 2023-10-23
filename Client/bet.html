@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/bet.css" />
+  <link rel="stylesheet" href="./styles/history.css" />
+
     <title>Bet</title>
 </head>
 <body>
@@ -18,14 +20,17 @@
         <p>2023-10-12</p>
         <div class="beta">
             <p>Today's bet </p>
-            <p>0</p>
+            <p><span id="NumberBet"></span></p>
         </div>
         
     </div>
 
-    <div class="betpa">
-        <img src="./images/betpa.png" alt="" class="rec">
-        <p>Absolutely empty</p>
+    <div class="empty-message">
+      <img src="images/record.png" alt="" class="rec">
+      <p>Absolutely Empty</p>
+    </div>
+    <div class="history" style="min-height: 100vh;">
+  
     </div>
 
     <footer >
@@ -63,5 +68,68 @@
             
         </div>
     </footer>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        // Make the API call to fetch recharge history
+        const token = localStorage.getItem("token"); // Replace with the actual user's token
+        try {
+          const response = await fetch(`http://localhost:5000/api/bet/getBet/${token}`);
+          if (response.ok) {
+            const rechargeHistory = await response.json();
+  
+            // Get the history container and the empty message container
+            const historyContainer = document.querySelector(".history");
+            const emptyMessage = document.querySelector(".empty-message");
+  
+            // Check if the recharge history is empty
+            if (rechargeHistory.length === 0) {
+              // If it's empty, show the empty message and hide the history container
+              emptyMessage.style.display = "block";
+              historyContainer.style.display = "none";
+            } else {
+              // If there is history, hide the empty message and populate the history container
+              emptyMessage.style.display = "none";
+              historyContainer.style.display = "block";
+
+              const NumberBet = document.getElementById("NumberBet");
+              NumberBet.innerText=rechargeHistory.length
+  
+              rechargeHistory.forEach(record => {
+                const matchElement = document.createElement("div");
+                matchElement.classList.add("historyRecord");
+  
+                matchElement.innerHTML = `
+                    <div class="Row Row1">
+                      <h2><span id="Status">Amount</span></h2>
+                      <h2><span id="Amount">${record.amount} $</span></h2>
+                    </div>
+                    <div class="Row">
+                      <h2>Percentage Return</h2>
+                      <h2><span id="Date">${record.percentage}%</span></h2>
+                    </div>
+                    <div class="Row">
+                      <h2>Result</h2>
+                      <h2>${record.result}</h2>
+                    </div>
+                    <div class="Row">
+                      <h2>Date</h2>
+                      <h2><span id="Date">${record.date}</span></h2>
+                    </div>
+                  `;
+  
+                historyContainer.appendChild(matchElement);
+              });
+            }
+          } else {
+            console.error('Failed to fetch recharge history');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+  
+    </script>
 </body>
 </html>
