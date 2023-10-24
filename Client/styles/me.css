@@ -12,6 +12,14 @@
 }
 .profile{
     border-radius: 50%;width: 15%;
+    position: relative;
+}
+.upd{
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    top: 60px;
+    margin-left: -20px;
 }
 .profile-name{
     color: white;
@@ -161,6 +169,13 @@ a{
     .arow{
         width: 10%;padding-top: 7px;
     }
+    .upd{
+        position: absolute;
+        border-radius: 50%;
+        width: 10px;
+        top: 50px;
+        margin-left: -10px;
+    }
 }
 @media (max-width: 375px) {
     /* Adjust styles for smaller screens */
@@ -188,6 +203,41 @@ a{
     }
     .arow{
         width: 10%;padding-top: 7px;
+    }
+}
+@media (max-width: 390px) {
+    /* Adjust styles for smaller screens */
+    .bg-style {
+        width: 100%;
+    }
+    .recharge1{
+        font-size: 9px;
+    }
+.froz{
+   font-size: 12px;
+    
+}
+    .total-bet {
+        width: 70%;
+    }
+
+    .balance {
+        width: 80%;
+    }
+
+    .center {
+        margin-top: 100px !important;
+        width: 80%;
+    }
+    .arow{
+        width: 10%;padding-top: 7px;
+    }
+    .upd{
+        position: absolute;
+        border-radius: 50%;
+        width: 15px;
+        top: 60px;
+        margin-left: -10px;
     }
 }
 @media (max-width: 425px) {

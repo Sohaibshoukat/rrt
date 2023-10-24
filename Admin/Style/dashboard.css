@@ -1067,3 +1067,10 @@ margin: 5%;
 .accept{
     background-color: rgb(46, 164, 70);color: white;border: none;border-radius: 5px;margin: 5px;padding: 10px;
 }
+.update{
+    background-color: rgb(188, 186, 20);color: white;border: none;border-radius: 5px;margin: 5px;padding: 10px;
+}
+.inp{
+    border: none;
+    padding: 10px;
+}
