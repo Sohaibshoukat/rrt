@@ -106,7 +106,6 @@ router.put("/Deny", async (req, res) => {
     }
 });
 
-
 // Function to execute a SQL query
 async function executeQuery(query, values) {
     return new Promise((resolve, reject) => {

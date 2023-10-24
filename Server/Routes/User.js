@@ -28,8 +28,8 @@ router.post("/createuser", async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const secPassword = await bcrypt.hash(password, salt);
 
-        const insertQuery = "INSERT INTO users (email, username, password, phone, InvitationCode,balance) VALUES (?, ?, ?, ?, ?, ?)";
-        const insertValues = [email, username, secPassword, contact, code,0];
+        const insertQuery = "INSERT INTO users (email, username, password, phone, InvitationCode,balance, fundpassword,status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        const insertValues = [email, username, secPassword, contact, code,0,1234,"Not Verified"];
 
         const result = await executeQuery(insertQuery, insertValues);
 
@@ -82,6 +82,26 @@ router.get('/UserGet/:token', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Network error occurred');
+    }
+});
+
+router.post("/UploadProfileImage", upload.single('image') , async (req, res) => {
+    try {
+        const token = req.body.token;
+        const image = req.file.buffer.toString('base64');
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        const insertQuery = "UPDATE users SET CNIC_FRONT = ? WHERE id=?;";
+        const insertValues = [image, id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
     }
 });
 
@@ -144,7 +164,6 @@ router.post("/UploadbackImage", upload.single('image') , async (req, res) => {
             res.status(500).send('Error occurred');
         }
 });
-
 
 router.get('/FetchFrontImage/:token', async (req, res) => {
     let success=false;
@@ -227,6 +246,132 @@ router.get('/getusers', async (req, res) => {
     }
 });
 
+router.put("/ApproveUser", async (req, res) => {
+    try {
+        const { id } = req.body
+
+        const insertQuery = "UPDATE users SET status = ? WHERE id=?;";
+        const insertValues = ["Verified", id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
+router.put("/ChangePassword", async (req, res) => {
+    try {
+        const { token ,oldPassword, NewPassword } = req.body;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        const user = await getUserById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: "Account not found" });
+        }
+
+        const passwordCompare = await bcrypt.compare(oldPassword, user.password);
+
+        if (!passwordCompare) {
+            return res.status(400).json({ error: "Invalid credentials" });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const secPassword = await bcrypt.hash(NewPassword, salt);
+
+        const insertQuery = "UPDATE users SET password = ? WHERE id=?;";
+        const insertValues = [secPassword, id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
+router.put("/ChangeFundPassword", async (req, res) => {
+    try {
+        const { token, NewPassword } = req.body;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        const user = await getUserById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: "Account not found" });
+        }
+
+        const insertQuery = "UPDATE users SET fundpassword = ? WHERE id=?;";
+        const insertValues = [NewPassword, id];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
+router.put("/ChangeEmail", async (req, res) => {
+    try {
+        const { token ,oldEmail, NewEmail } = req.body;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        const user = await getUserById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: "Account not found" });
+        }
+
+        const insertQuery = "UPDATE users SET email = ? WHERE id = ? AND email = ?;";
+        const insertValues = [NewEmail, id,oldEmail];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
+router.put("/ChangePhone", async (req, res) => {
+    try {
+        const { token ,oldPhone, NewPhone } = req.body;
+
+        const password = jwt.verify(token, JWT_KEY);
+        const id = password.user.id;
+
+        const user = await getUserById(id);
+
+        if (!user) {
+            return res.status(400).json({ error: "Account not found" });
+        }
+
+        const insertQuery = "UPDATE users SET phone = ? WHERE id = ? AND phone = ?;";
+        const insertValues = [NewPhone, id, oldPhone];
+
+        const result = await executeQuery(insertQuery, insertValues);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error occurred');
+    }
+});
+
+
 
 // Function to check if a user with a given field (email/username) exists
 async function checkIfUserExists(field, value) {
@@ -252,6 +397,12 @@ async function executeQuery(query, values) {
 async function getUserByUserName(username) {
     const query = "SELECT * FROM users WHERE username = ?";
     const result = await executeQuery(query, [username]);
+    return result[0];
+}
+
+async function getUserById(id) {
+    const query = "SELECT * FROM users WHERE id = ?";
+    const result = await executeQuery(query, [id]);
     return result[0];
 }
 
