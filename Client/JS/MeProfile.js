@@ -20,16 +20,25 @@ async function getUserData() {
         const profileNameElement = document.getElementById('ProfileName');
         const balanceElement = document.getElementById('Balance');
         const pkrBalanceElement = document.getElementById('PKRbalance');
+        const VipLevel = document.getElementById('VipLevel');
+        const profimg = document.getElementById('profileImage');
   
         profileNameElement.textContent = data.result.username; // Assuming 'name' is the property in the API response for the user's name
+        VipLevel.textContent = data.result.status; // Assuming 'name' is the property in the API response for the user's name
         if(data.result.balance==null){
             balanceElement.textContent = 0; // Assuming 'balance' is the property in the API response for the user's balance
         }
         else{
             balanceElement.textContent = data.result.balance; // Assuming 'balance' is the property in the API response for the user's balance
-
         }
         pkrBalanceElement.textContent = data.result.balance*295;
+
+        if(data.result.profileImg!=null){
+          profimg.src=`data:image/png;base64,${data.result.profileImg}`
+        }
+        else{
+        profimg.src=`./images/profile.png`
+        }
 
 
         const betresponse = await fetch(`http://localhost:5000/api/bet/getBet/${token}`, {

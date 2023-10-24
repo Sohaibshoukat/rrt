@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./styles/cnic.css">
     <title>Update Profile Image</title>
 </head>
+
 <body>
     <div class="invite">
         <a href="me.html">
@@ -19,9 +21,9 @@
     <div class="Preview">
         <h2>Update Profile Image</h2>
         <div class="ImagesUploaded">
-            <div class="Image1" >
+            <div class="Image1">
+                <img src="" alt="" id="profileImage">
             </div>
-            
         </div>
     </div>
 
@@ -33,6 +35,73 @@
         </div>
     </div>
 
-    <script src="./JS/UploadCNIC.js"></script>
+    <script>
+        async function getUserData() {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/UserGet/${token}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+      if (response.ok) {
+        const data = await response.json();
+        const profimg = document.getElementById('profileImage');
+
+        if(data.result.profileImg!=null){
+            profimg.src=`data:image/png;base64,${data.result.profileImg}`
+        }
+        else{
+            profimg.src=`./images/profile.png`
+        }
+      } else {
+        console.error('API call failed');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  // Call the function on page load
+  window.onload = getUserData;
+  
+
+  document.getElementById('FrontImage').addEventListener('click', async () => {
+    const imageInput = document.getElementById('cnicimg');
+    const imageFile = imageInput.files[0];
+
+    if (imageFile) {
+        const formData = new FormData();
+        formData.append('image', imageFile);
+        formData.append('token', localStorage.getItem("token"));
+
+        try {
+            const response = await fetch('http://localhost:5000/api/user/UploadProfileImage', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                if (responseData.success) {
+                    // Image uploaded successfully
+                    location.reload()
+                    // You can perform any additional actions here, like updating the UI.
+                } else {
+                    alert('Image upload failed.');
+                }
+            } else {
+                alert('Image upload failed. Server response not ok.');
+            }
+        } catch (error) {
+            alert('Error occurred during image upload:', error);
+        }
+    } else {
+        alert('No image selected.');
+    }
+});
+    </script>
 </body>
+
 </html>

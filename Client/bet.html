@@ -1,139 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/global.css" />
-    <link rel="stylesheet" href="./styles/bet.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/global.css" />
+  <link rel="stylesheet" href="./styles/bet.css" />
   <link rel="stylesheet" href="./styles/history.css" />
 
-    <title>Bet</title>
+  <title>Bet</title>
 </head>
+
 <body>
-    <div class="invite">
-       <div></div>
-        <h3>Bet</h3>
-        <div></div>
+  <div class="invite">
+    <div></div>
+    <h3>Bet</h3>
+    <div></div>
+  </div>
+
+  <div class="todays-bet">
+    <p>2023-10-12</p>
+    <div class="beta">
+      <p>Today's bet </p>
+      <p><span id="NumberBet"></span></p>
     </div>
 
-    <div class="todays-bet">
-        <p>2023-10-12</p>
-        <div class="beta">
-            <p>Today's bet </p>
-            <p><span id="NumberBet"></span></p>
-        </div>
-        
+  </div>
+
+  <div class="empty-message">
+    <img src="images/record.png" alt="" class="rec">
+    <p>Absolutely Empty</p>
+  </div>
+  <div class="history" style="min-height: 100vh;">
+
+  </div>
+
+  <footer>
+    <div class="Menu">
+      <a href="/">
+        <img src="./images/home.png" alt="">
+        <p>Home</p>
+      </a>
     </div>
-
-    <div class="empty-message">
-      <img src="images/record.png" alt="" class="rec">
-      <p>Absolutely Empty</p>
+    <div class="Menu">
+      <a href="Matches.html">
+        <img src="./images/match.png" alt="">
+        <p>Match</p>
+      </a>
     </div>
-    <div class="history" style="min-height: 100vh;">
-  
+    <div class="Menu">
+      <a href="function.html">
+        <img src="./images/fun.png" alt="">
+        <p>Function</p>
+      </a>
+
     </div>
+    <div class="Menu">
+      <a href="bet.html">
+        <img src="./images/bet.png" alt="">
+        <p>Bet</p>
+      </a>
 
-    <footer >
-        <div class="Menu">
-            <a href="/">
-                <img src="./images/home.png" alt="">
-                <p>Home</p>
-            </a>
-        </div>
-        <div class="Menu">
-            <a href="Matches.html">
-                <img src="./images/match.png" alt="">
-                <p>Match</p>
-            </a>
-        </div>
-        <div class="Menu">
-          <a href="function.html">
-            <img src="./images/fun.png" alt="">
-            <p>Function</p>
-          </a>
-            
-        </div>
-        <div class="Menu">
-          <a href="bet.html">
-            <img src="./images/bet.png" alt="">
-            <p>Bet</p>
-          </a>
-            
-        </div>
-        <div class="Menu">
-          <a href="me.html">
-            <img src="./images/me.png" alt="">
-            <p>Me</p>
-          </a>
-            
-        </div>
-    </footer>
+    </div>
+    <div class="Menu">
+      <a href="me.html">
+        <img src="./images/me.png" alt="">
+        <p>Me</p>
+      </a>
+
+    </div>
+  </footer>
 
 
-    <script>
-      document.addEventListener("DOMContentLoaded", async function () {
-        // Make the API call to fetch recharge history
-        const token = localStorage.getItem("token"); // Replace with the actual user's token
-        try {
-          const response = await fetch(`http://localhost:5000/api/bet/getBet/${token}`);
-          if (response.ok) {
-            const rechargeHistory = await response.json();
-  
-            // Get the history container and the empty message container
-            const historyContainer = document.querySelector(".history");
-            const emptyMessage = document.querySelector(".empty-message");
-  
-            // Check if the recharge history is empty
-            if (rechargeHistory.length === 0) {
-              // If it's empty, show the empty message and hide the history container
-              emptyMessage.style.display = "block";
-              historyContainer.style.display = "none";
-            } else {
-              // If there is history, hide the empty message and populate the history container
-              emptyMessage.style.display = "none";
-              historyContainer.style.display = "block";
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      // Make the API call to fetch recharge history
+      const token = localStorage.getItem("token"); // Replace with the actual user's token
+      try {
+        const response = await fetch(`http://localhost:5000/api/bet/getBet/${token}`);
+        if (response.ok) {
+          const rechargeHistory = await response.json();
 
-              const NumberBet = document.getElementById("NumberBet");
-              NumberBet.innerText=rechargeHistory.length
-  
-              rechargeHistory.forEach(record => {
-                const matchElement = document.createElement("div");
-                matchElement.classList.add("historyRecord");
-  
-                matchElement.innerHTML = `
-                    <div class="Row Row1">
-                      <h2><span id="Status">Amount</span></h2>
-                      <h2><span id="Amount">${record.amount} $</span></h2>
-                    </div>
-                    <div class="Row">
-                      <h2>Percentage Return</h2>
-                      <h2><span id="Date">${record.percentage}%</span></h2>
-                    </div>
-                    <div class="Row">
-                      <h2>Result</h2>
-                      <h2>${record.result}</h2>
-                    </div>
-                    <div class="Row">
-                      <h2>Date</h2>
-                      <h2><span id="Date">${record.date}</span></h2>
-                    </div>
-                    <div class="Row">
-                      <h2>5% cancellation charges</h2>
-                      <button class="reject">Cancel</button>
-                    </div>
-                  `;
-  
-                historyContainer.appendChild(matchElement);
-              });
-            }
+          // Get the history container and the empty message container
+          const historyContainer = document.querySelector(".history");
+          const emptyMessage = document.querySelector(".empty-message");
+
+          // Check if the recharge history is empty
+          if (rechargeHistory.length === 0) {
+            // If it's empty, show the empty message and hide the history container
+            emptyMessage.style.display = "block";
+            historyContainer.style.display = "none";
           } else {
-            console.error('Failed to fetch recharge history');
+            // If there is history, hide the empty message and populate the history container
+            emptyMessage.style.display = "none";
+            historyContainer.style.display = "block";
+
+            const NumberBet = document.getElementById("NumberBet");
+            NumberBet.innerText = rechargeHistory.length
+
+            rechargeHistory.forEach(record => {
+              const matchElement = document.createElement("div");
+              matchElement.classList.add("historyRecord");
+
+              matchElement.innerHTML = `
+        <div class="Row Row1">
+          <h2><span id="Status">Amount</span></h2>
+          <h2><span id="Amount">${record.amount} $</span></h2>
+        </div>
+        <div class="Row">
+          <h2>Percentage Return</h2>
+          <h2><span id="Date">${record.percentage}%</span></h2>
+        </div>
+        <div class="Row">
+          <h2>Result</h2>
+          <h2>${record.result}</h2>
+        </div>
+        <div class="Row">
+          <h2>Date</h2>
+          <h2><span id="Date">${record.date}</span></h2>
+        </div>
+    `;
+
+              // Conditionally add the cancellation charges section if record.result is "pending"
+              if (record.result === "Pending") {
+                matchElement.innerHTML += `
+            <div class="Row">
+              <h2>5% cancellation charges</h2>
+              <button class="reject" onclick="CancelBet(${record.id},${record.userid},${record.amount})">Cancel</button>
+            </div>
+        `;
+              }
+
+              historyContainer.appendChild(matchElement);
+            });
           }
-        } catch (error) {
-          console.error(error);
+        } else {
+          console.error('Failed to fetch recharge history');
         }
-      });
-  
-    </script>
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    async function CancelBet(DenyId, id, amount) {
+      const response = await fetch(`http://localhost:5000/api/bet/PersonalCancel`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: DenyId,
+          balance: amount,
+          userid: id
+        }),
+      })
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Bet Cancel");
+        location.reload();
+      } else {
+        console.error("Failed to change fund password");
+      }
+    }
+
+  </script>
 </body>
+
 </html>

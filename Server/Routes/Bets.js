@@ -77,7 +77,7 @@ router.put("/PersonalCancel", async (req, res) => {
             }
             amountCut = (balance * 5) / 100;
 
-            newBalance = result3[0].balance + balance - amountCut;
+            newBalance = (result3[0].balance + balance) - amountCut;
             const insertQuery2 = "UPDATE users SET balance = ? WHERE id=?;";
             const insertValues2 = [newBalance, userid];
             const result2 = await executeQuery(insertQuery2, insertValues2);
@@ -128,7 +128,7 @@ router.put("/BetManipulate", async (req, res) => {
 
         const result = await executeQuery(insertQuery, insertValues);
 
-        res.json({})
+        res.json({success:true})
     } catch (error) {
         console.error(error);
         res.status(500).send('Error occurred');
@@ -153,8 +153,7 @@ router.put("/Betlose", async (req, res) => {
     }
 });
 
-
-router.put("/PersonalCancel", async (req, res) => {
+router.put("/BetWin", async (req, res) => {
     let newBalance = 0;
     let amountAdd;
     try {
