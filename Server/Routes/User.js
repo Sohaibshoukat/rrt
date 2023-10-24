@@ -43,7 +43,6 @@ router.post("/createuser", async (req, res) => {
     }
 });
 
-// Login a user
 router.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -93,7 +92,7 @@ router.post("/UploadProfileImage", upload.single('image') , async (req, res) => 
         const password = jwt.verify(token, JWT_KEY);
         const id = password.user.id;
 
-        const insertQuery = "UPDATE users SET CNIC_FRONT = ? WHERE id=?;";
+        const insertQuery = "UPDATE users SET profileImg = ? WHERE id=?;";
         const insertValues = [image, id];
 
         const result = await executeQuery(insertQuery, insertValues);
@@ -237,7 +236,7 @@ router.get('/Fetchfundpassword/:token', async (req, res) => {
 router.get('/getusers', async (req, res) => {
     try {
 
-        connection.query('SELECT * FROM users', async (err, result) => {
+        connection.query('SELECT * FROM users WHERE status = ?',["Not Verified"], async (err, result) => {
             return res.json({success:true,result: result});
         });
     } catch (error) {

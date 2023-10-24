@@ -11,7 +11,9 @@
     background: linear-gradient(90deg,#ffca32,#fc9414);
 }
 .profile{
-    border-radius: 50%;width: 15%;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
     position: relative;
 }
 .upd{
