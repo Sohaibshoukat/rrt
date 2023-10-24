@@ -36,3 +36,6 @@
     justify-content: flex-start;
     align-items: center;
 }
+.reject{
+    background-color: rgb(249, 75, 75);color: white;border: none;border-radius: 5px;margin: 5px;padding: 10px;
+}

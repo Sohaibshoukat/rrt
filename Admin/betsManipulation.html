@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="images/logo.png" type="icon-x" />
+    <title>Services | Dashboard</title>
+</head>
+<body>
+    <script>
+        if(!localStorage.getItem("AdminToken")){
+            window.open("login.html","_self");
+        }
+    </script>
+    <div class="header">
+        <div style="display: flex;">
+          <img src="images/logo.png" alt="">
+          <h1>RRT.cc</h1>
+        </div>
+        <div></div>
+        <div></div>
+          <div></div>
+          <a href="mainDashboard.html"><button>Back To Dashboard</button></a>
+          
+        
+        </div>
+    
+    <div class="subheader">
+       <h1>Bet Manipulation</h1>
+    </div>
+
+    <div class="servicetab">
+        <table >
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Match Title</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Percentage</th>
+                    <th>Status</th>
+                    <th>Win/Lose</th>
+                    <th>Bet Manipulation</th>
+                    <th>Cancel</th>
+            </thead>
+            <tbody id="Service">
+                <tr>
+                    <td>1</td>
+                    <td>IND</td>
+                    <td>24-10-2023</td>
+                    <td>1200</td>
+                    <td><input type="text" placeholder="Percentage Dummy" class="inp"></td>
+                    <td>New</td>
+                    <td>
+                        <button class="accept">Win</button>
+                        <button class="reject">Lose</button>
+                    </td>
+                    <td>
+                       <button class="update">update</button>
+                    </td>
+                    <td>
+                        <button class="reject">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+   
+    <script src="Js/FetchServices.js"></script>
+</body>
+</html>
