@@ -88,7 +88,7 @@
             let balance=0;
             const token = localStorage.getItem("token"); // Replace with the actual user's token
             try {
-                const response = await fetch(`http://localhost:5000/api/user/Fetchbalance/${token}`);
+                const response = await fetch(`https://ipocrypto.cc/api/user/Fetchbalance/${token}`);
                 if (response.ok) {
                     const data = await response.json();
                     balance=data.result.balance;
@@ -117,7 +117,7 @@
                 // Fetch the user's fund password
                 try {
                     // Fetch the user's fund password
-                    const fundPasswordResponse = await fetch(`http://localhost:5000/api/user/Fetchfundpassword/${token}`);
+                    const fundPasswordResponse = await fetch(`https://ipocrypto.cc/api/user/Fetchfundpassword/${token}`);
                     if (fundPasswordResponse.ok) {
                         const fundPasswordData = await fundPasswordResponse.json();
                         const userFundPassword = fundPasswordData.result.fundpassword;
@@ -136,7 +136,7 @@
                         };
 
                         try {
-                            const createWithdrawalResponse = await fetch("http://localhost:5000/api/withdraw/createwithdraw", {
+                            const createWithdrawalResponse = await fetch("https://ipocrypto.cc/api/withdraw/createwithdraw", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",

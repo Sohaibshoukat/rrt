@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Make the API call to fetch recharge history
   const token = localStorage.getItem("token"); // Replace with the actual user's token
   try {
-    const response = await fetch(`http://localhost:5000/api/recharge/getRecharge/${token}`);
+    const response = await fetch(`https://ipocrypto.cc/api/recharge/getRecharge/${token}`);
     if (response.ok) {
       const rechargeHistory = await response.json();
 

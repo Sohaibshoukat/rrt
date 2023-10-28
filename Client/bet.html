@@ -8,20 +8,20 @@
   <link rel="stylesheet" href="./styles/bet.css" />
   <link rel="stylesheet" href="./styles/history.css" />
 
-  <title>Bet</title>
+  <title>Investments</title>
 </head>
 
 <body>
   <div class="invite">
     <div></div>
-    <h3>Bet</h3>
+    <h3>Investments</h3>
     <div></div>
   </div>
 
   <div class="todays-bet">
     <p>2023-10-12</p>
     <div class="beta">
-      <p>Today's bet </p>
+      <p>Today's Investments </p>
       <p><span id="NumberBet"></span></p>
     </div>
 
@@ -45,20 +45,13 @@
     <div class="Menu">
       <a href="Matches.html">
         <img src="./images/match.png" alt="">
-        <p>Match</p>
+        <p>Farming</p>
       </a>
-    </div>
-    <div class="Menu">
-      <a href="function.html">
-        <img src="./images/fun.png" alt="">
-        <p>Function</p>
-      </a>
-
     </div>
     <div class="Menu">
       <a href="bet.html">
         <img src="./images/bet.png" alt="">
-        <p>Bet</p>
+        <p>Investments</p>
       </a>
 
     </div>
@@ -77,7 +70,7 @@
       // Make the API call to fetch recharge history
       const token = localStorage.getItem("token"); // Replace with the actual user's token
       try {
-        const response = await fetch(`http://localhost:5000/api/bet/getBet/${token}`);
+        const response = await fetch(`https://ipocrypto.cc/api/bet/getBet/${token}`);
         if (response.ok) {
           const rechargeHistory = await response.json();
 
@@ -143,7 +136,7 @@
     });
 
     async function CancelBet(DenyId, id, amount) {
-      const response = await fetch(`http://localhost:5000/api/bet/PersonalCancel`, {
+      const response = await fetch(`https://ipocrypto.cc/api/bet/PersonalCancel`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

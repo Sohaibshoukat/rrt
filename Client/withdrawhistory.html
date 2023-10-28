@@ -30,7 +30,7 @@
       // Make the API call to fetch recharge history
       const token = localStorage.getItem("token"); // Replace with the actual user's token
       try {
-        const response = await fetch(`http://localhost:5000/api/withdraw/getWithdraw/${token}`);
+        const response = await fetch(`https://ipocrypto.cc/api/withdraw/getWithdraw/${token}`);
         if (response.ok) {
           const rechargeHistory = await response.json();
 

@@ -2,135 +2,165 @@ const Project=[
     {
         id:"1000713",
         time:"21:00:00",
-        title:"Erovnuli Liga",
+        title:"ARKM/USDT",
         Team:[
             {
-                name:"Dinamo Batumi",
-                img:"Dinamo"
+                name:"ARKM",
+                img:"ARKM"
             },
             {
-                name:"Dila",
-                img:"Dila"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1029185",
         time:"21:00:00",
-        title:"1 Lyga",
+        title:"BITA/USDT",
         Team:[
             {
-                name:"Garliava",
-                img:"Garliava"
+                name:"BITA",
+                img:"BITA"
             },
             {
-                name:"Panevezys II",
-                img:"Panevezys"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"988339",
         time:"21:00:00",
-        title:"Danallsvenskan",
+        title:"C98/USDT",
         Team:[
             {
-                name:"Norrkoping W",
-                img:"NoImage"
+                name:"C98",
+                img:"C98"
             },
             {
-                name:"Pitea",
-                img:"NoImage"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1137747",
         time:"21:00:00",
-        title:"League Cup",
+        title:"FUSDT/USDT",
         Team:[
             {
-                name:"Al-Jazira",
-                img:"AlJazira"
+                name:"FUSDT",
+                img:"FUSDT"
             },
             {
-                name:"Al Wahda FC",
-                img:"AlWahda"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1127307",
         time:"21:00:00",
-        title:"Persian Gulf Pro League",
+        title:"HOOK/USDT",
         Team:[
             {
-                name:"Foolad FC",
-                img:"Foolad"
+                name:"HOOK",
+                img:"HOOK"
             },
             {
-                name:"Esteghlal Khuzestan",
-                img:"Esteghal"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1138858",
         time:"21:00:00",
-        title:"Sultan Cup",
+        title:"ID/USDT",
         Team:[
             {
-                name:"Sohar",
-                img:"Sohar"
+                name:"ID",
+                img:"ID"
             },
             {
-                name:"Al Seeb",
-                img:"AlSeeb"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1136319",
         time:"21:00:00",
-        title:"Taca de Portugal",
+        title:"LOKA/USDT",
         Team:[
             {
-                name:"Lusitania",
-                img:"LogoSoon"
+                name:"LOKA",
+                img:"LOKA"
             },
             {
-                name:"Benfica",
-                img:"Benfica"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1107156",
         time:"21:00:00",
-        title:"3. liga - MSFL",
+        title:"TKO/USDT",
         Team:[
             {
-                name:"Hranice",
-                img:"LogoSoon"
+                name:"TKO",
+                img:"TKO"
             },
             {
-                name:"Frydek- Mistek",
-                img:"Frydek"
+                name:"USDT",
+                img:"USDT"
             }
         ]
     },
     {
         id:"1043188",
         time:"21:00:00",
-        title:"Super Liga",
+        title:"EDU/USDT",
         Team:[
             {
-                name:"Zlate Moravce",
-                img:"Zlate"
+                name:"EDU",
+                img:"EDU"
             },
             {
-                name:"Zemplin Michalovce",
-                img:"Zemplin"
+                name:"USDT",
+                img:"USDT"
+            }
+        ]
+    },
+    {
+        id:"1042183",
+        time:"21:00:00",
+        title:"GMT/USDT",
+        Team:[
+            {
+                name:"GMT",
+                img:"GMT"
+            },
+            {
+                name:"USDT",
+                img:"USDT"
+            }
+        ]
+    },
+    {
+        id:"1042372",
+        time:"21:00:00",
+        title:"VOXEL/USDT",
+        Team:[
+            {
+                name:"VOXEL",
+                img:"VOXEL"
+            },
+            {
+                name:"USDT",
+                img:"USDT"
             }
         ]
     }
@@ -139,6 +169,24 @@ const Project=[
 const matchesCollection = document.querySelector(".MatchesCollection");
 const searchInput = document.querySelector(".SearchTerm input");
 const searchButton = document.querySelector(".SearchTerm .btn");
+
+function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
 
 // Function to render matches based on the search input
 function renderMatches(query) {
@@ -166,12 +214,12 @@ function renderMatches(query) {
                     ${matchData.title}
                 </div>
                 <div class="Times">
-                    <p>${matchData.date}</p>
-                    <p>${matchData.time}</p>
+                    <p>${getCurrentDate()}</p>
+                    <p>${getCurrentTime()}</p>
                 </div>
                 <div class="Teams">
                     <div class="Team">
-                        <img src="./images/${matchData.Team[0].img}.png" alt="${matchData.Team[0].name}">
+                        <img src="./images/${matchData.Team[0].img}.jpg" alt="${matchData.Team[0].name}">
                         <h5>${matchData.Team[0].name}</h5>
                     </div>
                     <h4>VS</h4>

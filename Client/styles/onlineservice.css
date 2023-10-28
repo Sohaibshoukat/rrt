@@ -40,7 +40,7 @@
     top: 150px;
 }
 .welc{
-    background: linear-gradient(90deg, #fb3c90,#f062d8);
+    background: #03b003;
     flex-basis: 90%;
    flex-shrink: 0;
    flex-grow: 0;

@@ -17,7 +17,7 @@ function loginUser(event) {
         return;
     }
 
-    fetch("http://localhost:5000/api/user/login", {
+    fetch("https://ipocrypto.cc/api/user/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

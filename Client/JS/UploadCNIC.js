@@ -6,7 +6,7 @@
 const fetchCNICFrontImage = async () => {
     try {
         // Make an API call to get the CNIC front image
-        const response = await fetch(`http://localhost:5000/api/user/FetchFrontImage/${localStorage.getItem("token")}`, {
+        const response = await fetch(`https://ipocrypto.cc/api/user/FetchFrontImage/${localStorage.getItem("token")}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const fetchCNICFrontImage = async () => {
 const fetchCNICBackImage = async () => {
     try {
         // Make an API call to get the CNIC back image
-        const response = await fetch(`http://localhost:5000/api/user/FetchBackImage/${localStorage.getItem("token")}`, {
+        const response = await fetch(`https://ipocrypto.cc/api/user/FetchBackImage/${localStorage.getItem("token")}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ document.getElementById('FrontImage').addEventListener('click', async () => {
         formData.append('token', localStorage.getItem("token"));
 
         try {
-            const response = await fetch('http://localhost:5000/api/user/UploadFrontImage', {
+            const response = await fetch('https://ipocrypto.cc/api/user/UploadFrontImage', {
                 method: 'POST',
                 body: formData,
             });
@@ -120,7 +120,7 @@ document.getElementById('BackImage').addEventListener('click', async () => {
         formData.append('token', localStorage.getItem("token"));
 
         try {
-            const response = await fetch('http://localhost:5000/api/user/UploadbackImage', {
+            const response = await fetch('https://ipocrypto.cc/api/user/UploadbackImage', {
                 method: 'POST',
                 body: formData,
             });

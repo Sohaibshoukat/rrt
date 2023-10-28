@@ -14,10 +14,10 @@
     height: 300px;
     transition: all 0.5s linear;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-attachment: fixed;
     border-radius: 25px;
-    background-position: center;
+    background-position: 100%;
 
 }
 
@@ -38,9 +38,6 @@
     background-image: url("../images/Slider4.jpg");
 }
 
-.item5 {
-    background-image: url("../images/Slider5.jpg");
-}
 
 .MoneySection{
     display: flex;

@@ -7,7 +7,7 @@ const Signout=()=>{
 async function getUserData() {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/user/UserGet/${token}`, {
+      const response = await fetch(`https://ipocrypto.cc/api/user/UserGet/${token}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ async function getUserData() {
         // Update ProfileName and Balance elements
         const profileNameElement = document.getElementById('ProfileName');
         const balanceElement = document.getElementById('Balance');
-        const pkrBalanceElement = document.getElementById('PKRbalance');
+        // const pkrBalanceElement = document.getElementById('PKRbalance');
         const VipLevel = document.getElementById('VipLevel');
         const profimg = document.getElementById('profileImage');
   
@@ -31,7 +31,7 @@ async function getUserData() {
         else{
             balanceElement.textContent = data.result.balance; // Assuming 'balance' is the property in the API response for the user's balance
         }
-        pkrBalanceElement.textContent = data.result.balance*295;
+        // pkrBalanceElement.textContent = data.result.balance*295;
 
         if(data.result.profileImg!=null){
           profimg.src=`data:image/png;base64,${data.result.profileImg}`
@@ -41,7 +41,7 @@ async function getUserData() {
         }
 
 
-        const betresponse = await fetch(`http://localhost:5000/api/bet/getBet/${token}`, {
+        const betresponse = await fetch(`https://ipocrypto.cc/api/bet/getBet/${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

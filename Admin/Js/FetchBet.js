@@ -1,4 +1,4 @@
-fetch("http://localhost:5000/api/bet/getBets")
+fetch("https://ipocrypto.cc/api/bet/getBets")
     .then((response) => response.json())
     .then((data) => {
         const tableBody = document.getElementById("Service");
@@ -32,7 +32,7 @@ fetch("http://localhost:5000/api/bet/getBets")
 
 
 async function AdminCancel(DenyId, id, amount) {
-        const response = await fetch(`http://localhost:5000/api/bet/AdminCancel`, {
+        const response = await fetch(`https://ipocrypto.cc/api/bet/AdminCancel`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -60,7 +60,7 @@ async function UpdatePer(itemid) {
     if(newval==""){
         return alert("Canot Be Empty");
     }
-    const response = await fetch(`http://localhost:5000/api/bet/BetManipulate`, {
+    const response = await fetch(`https://ipocrypto.cc/api/bet/BetManipulate`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -82,7 +82,7 @@ async function UpdatePer(itemid) {
 }
 
 async function LoseBet(itemid) {
-    const response = await fetch(`http://localhost:5000/api/bet/Betlose`, {
+    const response = await fetch(`https://ipocrypto.cc/api/bet/Betlose`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -103,7 +103,7 @@ async function LoseBet(itemid) {
 }
 
 async function WinBet(DenyId, id, amount,per) {
-    const response = await fetch(`http://localhost:5000/api/bet/BetWin`, {
+    const response = await fetch(`https://ipocrypto.cc/api/bet/BetWin`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

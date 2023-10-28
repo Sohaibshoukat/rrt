@@ -13,9 +13,8 @@ function registerUser(event) {
     const username = form.querySelector('input[name="username"]').value;
     const password = form.querySelector('input[name="password"]').value;
     const contact = form.querySelector('input[name="phone-number"]').value;
-    const code = form.querySelector('input[name="Invitation-code"]').value;
 
-    if (!email || !username || !password || !contact || !code) {
+    if (!email || !username || !password || !contact) {
         alert("Please fill in all fields.");
         return;
     }
@@ -30,12 +29,12 @@ function registerUser(event) {
         return;
     }
 
-    fetch("http://localhost:5000/api/user/createuser", {
+    fetch("https://ipocrypto.cc/api/user/createuser", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password, contact, code }),
+        body: JSON.stringify({ email, username, password, contact, code:0 }),
     })
     .then((response) => response.json())
     .then((data) => {

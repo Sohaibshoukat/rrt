@@ -1,4 +1,4 @@
-fetch("http://localhost:5000/api/withdraw/newwithdraw")
+fetch("https://ipocrypto.cc/api/withdraw/newwithdraw")
     .then((response) => response.json())
     .then((data) => {
         const tableBody = document.getElementById("Withdraw");
@@ -27,7 +27,7 @@ fetch("http://localhost:5000/api/withdraw/newwithdraw")
 
 
 async function DenyService(DenyId) {
-    const response = await fetch(`http://localhost:5000/api/withdraw/Deny`, {
+    const response = await fetch(`https://ipocrypto.cc/api/withdraw/Deny`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -38,7 +38,7 @@ async function DenyService(DenyId) {
 }
 
 async function AcceptService(DenyId,amount,userid) {
-    const response = await fetch(`http://localhost:5000/api/withdraw/approve`, {
+    const response = await fetch(`https://ipocrypto.cc/api/withdraw/approve`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

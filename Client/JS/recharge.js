@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Select the elements for displaying selected balance and actual amount
     const selectedBalance = document.getElementById("SelectedBalance");
-    const actualAmount = document.getElementById("Actual");
+    // const actualAmount = document.getElementById("Actual");
 
     // Add a click event listener to each recharge amount element
     rechargeAmounts.forEach(function(amountElement) {
@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const selectedAmount = parseInt(amountElement.textContent);
 
             // Calculate the actual amount
-            const exchangeRate = 295;
-            const actual = selectedAmount * exchangeRate;
+            // const exchangeRate = 295;
+            // const actual = selectedAmount * exchangeRate;
 
             // Update the selected balance and actual amount elements
-            selectedBalance.textContent = selectedAmount;
-            actualAmount.textContent = actual;
+            selectedBalance.value = selectedAmount;
+            // actualAmount.textContent = actual;
 
             // Enable the Recharge button
             rechargeBtn.disabled = false;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add a click event listener to the Recharge button
     rechargeBtn.addEventListener("click", function() {
         // Get the selected amount
-        const selectedAmount = parseInt(selectedBalance.textContent);
+        const selectedAmount = parseInt(selectedBalance.value);
 
         // Store the selected amount in session storage
         sessionStorage.setItem("Amount", selectedAmount);

@@ -1,4 +1,4 @@
-fetch("http://localhost:5000/api/recharge/newRecharge")
+fetch("https://ipocrypto.cc/api/recharge/newRecharge")
     .then((response) => response.json())
     .then((data) => {
         const tableBody = document.getElementById("Service");
@@ -27,7 +27,7 @@ fetch("http://localhost:5000/api/recharge/newRecharge")
 
 
 async function DenyService(DenyId) {
-    const response = await fetch(`http://localhost:5000/api/recharge/Deny`, {
+    const response = await fetch(`https://ipocrypto.cc/api/recharge/Deny`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -38,7 +38,7 @@ async function DenyService(DenyId) {
 }
 
 async function AcceptService(DenyId,amount,userid) {
-    const response = await fetch(`http://localhost:5000/api/recharge/approve`, {
+    const response = await fetch(`https://ipocrypto.cc/api/recharge/approve`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

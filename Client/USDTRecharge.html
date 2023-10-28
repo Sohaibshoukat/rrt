@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/Recharge.css">
+    <link rel="stylesheet" href="./styles/recharge.css">
     <link rel="stylesheet" href="./styles/global.css">
     <title>USDT</title>
 </head>
@@ -76,7 +76,7 @@
                 const token = localStorage.getItem("token"); // Replace with the user's token (retrieve from local storage or another source)
 
                 try {
-                    const response = await fetch("http://localhost:5000/api/recharge/create", {
+                    const response = await fetch("https://ipocrypto.cc/api/recharge/create", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

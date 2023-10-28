@@ -1,4 +1,4 @@
-fetch("http://localhost:5000/api/user/getusers")
+fetch("https://ipocrypto.cc/api/user/getusers")
     .then((response) => response.json())
     .then((data) => {
         const tableBody = document.getElementById("Users");
@@ -28,7 +28,7 @@ fetch("http://localhost:5000/api/user/getusers")
 
 
 async function UpdateApprove(itemid) {
-    const response = await fetch(`http://localhost:5000/api/user/ApproveUser`, {
+    const response = await fetch(`https://ipocrypto.cc/api/user/ApproveUser`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
